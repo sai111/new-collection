@@ -1,0 +1,38 @@
+{
+  "title": "GM-collection",
+  "description": "前端整理收集",
+  "author": "songsong",
+  "language": "zh-hans",
+  "links": {
+    "sidebar": {}
+  },
+  "styles": {
+    "website": "style.css"
+  },
+  "plugins": [
+    "-lunr",
+    "-search",
+    "-sharing",
+    "-livereload",
+    "expandable-chapters",
+    "search-plus",
+    "splitter",
+    "github",
+    "code",
+    "back-to-top-button",
+    "chapter-fold",
+    "expandable-chapters-small",
+    "page-treeview",
+    "popup",
+    "emphasize",
+    "lightbox",
+    "click-reveal",
+    "flexible-alerts",
+    "accordion"
+  ],
+  "pluginsConfig": {
+    "github": {
+      "url": "https://github.com/sai111/new-collection"
+    }
+  }
+}
