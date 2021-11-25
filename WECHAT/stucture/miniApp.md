@@ -17,4 +17,4 @@
 
 ### 创建一个项目
 
-![image-20211124183252896](/Users/miao/Desktop/demo/WECHAT/image/image-20211124183252896.png)
+![创建一个项目]](../image/创建一个项目.png)

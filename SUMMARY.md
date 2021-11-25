@@ -1,6 +1,7 @@
 # 学习之旅
 
 * [目录](README.md)
+
 * [说明](introduce.md)
 
 * gitbook相关资料
@@ -61,6 +62,7 @@
 * VUE
 
 * 介绍
+
 * 基础
 
 * VUE3
@@ -84,5 +86,10 @@
   	VM：视图数据连接层
 
 * REACT
+
+* [微信]
+  * [介绍](WECHAT/read.md)
+  * [微信小程序](WECHAT/stucture/miniApp.md)
+
 
   
