@@ -459,9 +459,7 @@
       * [可复用过渡和动态过渡](FELib/vue/transition/others.md)
       * [过渡状态](FELib/vue/transition/state.md)
     * 插件
-* 介绍
 
-* 基础
 
 * VUE3
   * 1. 介绍
