@@ -1,12 +1,12 @@
-# Bootstrap面板
+# Bootstrap 面板
 
-&emsp;&emsp;面板（Panels）是Bootstrap框架新增的一个组件，某些时候可能需要将某些 DOM 内容放到一个盒子里。对于这种情况，可以使用面板组件。本文将详细介绍Bootstrap面板
+&emsp;&emsp;面板（Panels）是 Bootstrap 框架新增的一个组件，某些时候可能需要将某些 DOM 内容放到一个盒子里。对于这种情况，可以使用面板组件。本文将详细介绍 Bootstrap 面板
 
 &nbsp;
 
 ### 基础面板
 
-&emsp;&emsp;基础面板非常简单，就是一个div容器运用了&ldquo;panel&rdquo;样式，产生一个具有边框的文本显示块，另外在里面添加了一个&ldquo;div.panel-body&rdquo;来放置面板主体内容
+&emsp;&emsp;基础面板非常简单，就是一个 div 容器运用了&ldquo;panel&rdquo;样式，产生一个具有边框的文本显示块，另外在里面添加了一个&ldquo;div.panel-body&rdquo;来放置面板主体内容
 
 <div>
 <pre>.panel {
@@ -31,13 +31,13 @@
 
 【部件】
 
-&emsp;&emsp;基础面板看上去太简单了，Bootstrap为了丰富面板的功能，特意为面板增加&ldquo;面板头部&rdquo;和&ldquo;页面尾部&rdquo;的效果：
+&emsp;&emsp;基础面板看上去太简单了，Bootstrap 为了丰富面板的功能，特意为面板增加&ldquo;面板头部&rdquo;和&ldquo;页面尾部&rdquo;的效果：
 
 &emsp;&emsp;☑&nbsp;&nbsp;panel-heading：用来设置面板头部样式
 
 &emsp;&emsp;☑&nbsp;panel-footer：用来设置面板尾部样式
 
-&emsp;&emsp;panel-heading和panel-footer也仅仅间距和圆角等样式进行了设置
+&emsp;&emsp;panel-heading 和 panel-footer 也仅仅间距和圆角等样式进行了设置
 
 <div>
 <pre>.panel-heading {
@@ -68,9 +68,9 @@
 </div>
 <div>
 <pre>&lt;div class="panel"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;前端学习博客&lt;/div&gt;
-    &lt;div class="panel-footer"&gt;作者：小火柴&lt;/div&gt;
+    &lt;div class="panel-footer"&gt;作者：&lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
 
@@ -80,7 +80,7 @@
 
 ### 彩色面板
 
-&emsp;&emsp;panel样式并没有对主题进行样式设置，而主题样式是通过panel-default来设置。在Bootstrap框架中面板组件除了默认的主题样式之外，还包括以下几种主题样式，构成了一个彩色面板：
+&emsp;&emsp;panel 样式并没有对主题进行样式设置，而主题样式是通过 panel-default 来设置。在 Bootstrap 框架中面板组件除了默认的主题样式之外，还包括以下几种主题样式，构成了一个彩色面板：
 
 &emsp;&emsp;☑&nbsp;&nbsp;panel-primary：重点蓝
 
@@ -92,43 +92,43 @@
 
 &emsp;&emsp;☑&nbsp;panel-danger：危险红
 
-&emsp;&emsp;使用方法很简单，只需要在panel的类名基础上增加自己需要的类名
+&emsp;&emsp;使用方法很简单，只需要在 panel 的类名基础上增加自己需要的类名
 
 <div>
 <pre>&lt;div class="panel"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;前端学习博客&lt;/div&gt;
-    &lt;div class="panel-footer"&gt;作者：小火柴&lt;/div&gt;
+    &lt;div class="panel-footer"&gt;作者：&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="panel panel-default"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;前端学习博客&lt;/div&gt;
-    &lt;div class="panel-footer"&gt;作者：小火柴&lt;/div&gt;
+    &lt;div class="panel-footer"&gt;作者：&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="panel panel-primary"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;前端学习博客&lt;/div&gt;
-    &lt;div class="panel-footer"&gt;作者：小火柴&lt;/div&gt;
+    &lt;div class="panel-footer"&gt;作者：&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="panel panel-success"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;前端学习博客&lt;/div&gt;
-    &lt;div class="panel-footer"&gt;作者：小火柴&lt;/div&gt;
+    &lt;div class="panel-footer"&gt;作者：&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="panel panel-info"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;前端学习博客&lt;/div&gt;
-    &lt;div class="panel-footer"&gt;作者：小火柴&lt;/div&gt;
+    &lt;div class="panel-footer"&gt;作者：&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="panel panel-warning"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;前端学习博客&lt;/div&gt;
-    &lt;div class="panel-footer"&gt;作者：小火柴&lt;/div&gt;
+    &lt;div class="panel-footer"&gt;作者：&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="panel panel-danger"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;前端学习博客&lt;/div&gt;
-    &lt;div class="panel-footer"&gt;作者：小火柴&lt;/div&gt;
+    &lt;div class="panel-footer"&gt;作者：&lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
 
@@ -138,13 +138,13 @@
 
 ### 表格嵌套
 
-&emsp;&emsp;一般情况下可以把面板理解为一个区域，在使用面板的时候，都会在panel-body放置需要的内容，可能是图片、表格或者列表等
+&emsp;&emsp;一般情况下可以把面板理解为一个区域，在使用面板的时候，都会在 panel-body 放置需要的内容，可能是图片、表格或者列表等
 
 &emsp;&emsp;为面板中不需要边框的表格添加&nbsp;`.table`&nbsp;类，使整个面板看上去更像是一个整体设计。如果是带有&nbsp;`.panel-body`&nbsp;的面板，我们为表格的上方添加一个边框，看上去有分隔效果
 
 <div>
 <pre>&lt;div class="panel panel-default"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;
         &lt;p&gt;前端学习博客&lt;/p&gt;
     &lt;/div&gt;
@@ -195,7 +195,7 @@
 
 <div>
 <pre>&lt;div class="panel panel-default"&gt;
-    &lt;div class="panel-heading"&gt;小火柴的蓝色理想&lt;/div&gt;
+    &lt;div class="panel-heading"&gt;的蓝色理想&lt;/div&gt;
     &lt;div class="panel-body"&gt;
         &lt;p&gt;前端学习博客&lt;/p&gt;
     &lt;/div&gt;
@@ -210,4 +210,3 @@
 </div>
 
 <iframe style="width: 100%; height: 328px;" src="https://demo.xiaohuochai.site/bootstrap/panel/p6.html" frameborder="0" width="320" height="240"></iframe>
-

@@ -40,6 +40,14 @@
     * [nodeJS 和 MongoDB 安装](utils/linux/nodeJSAndMongoDB.md)
     * [云服务器常用设置](utils/linux/server.md)
   * 辅助工具
+    * [sublime](utils/helper/sublime.md)
+    * [vscode常用设置](utils/helper/vscode.md)
+    * [chrome 调试工具](utils/helper/chrome.md)
+    * [电脑常见问题处理](utils/helper/common.md)
+    * [搜索引擎的使用](utils/helper/searchEngine.md)
+    * [markdown](utils/helper/markdown.md)
+    * [sass](utils/helper/sass.md)
+    * [gitbook](utils/helper/gitbook.md)
 * HTML
 
   * [介绍](HTML/HTML.md)

@@ -1,12 +1,12 @@
-# Bootstrap导航条
+# Bootstrap 导航条
 
-&emsp;&emsp;导航条（navbar）和[导航](http://www.cnblogs.com/xiaohuochai/p/7111581.html)（nav），就相差一个字，多了一个&ldquo;条&rdquo;字。其实在Bootstrap框架中他们还是明显的区别。在导航条(navbar)中有一个背景色、而且导航条可以是纯链接（类似导航），也可以是表单，还有就是表单和导航一起结合等多种形式。本文将详细介绍Bootstrap导航条
+&emsp;&emsp;导航条（navbar）和[导航](http://www.cnblogs.com/xiaohuochai/p/7111581.html)（nav），就相差一个字，多了一个&ldquo;条&rdquo;字。其实在 Bootstrap 框架中他们还是明显的区别。在导航条(navbar)中有一个背景色、而且导航条可以是纯链接（类似导航），也可以是表单，还有就是表单和导航一起结合等多种形式。本文将详细介绍 Bootstrap 导航条
 
 &nbsp;
 
 ### 基础导航条
 
-&emsp;&emsp;在Bootstrap框架中，导航条和导航从外观上差别不是太多，但在实际使用中导航条要比导航复杂得多。
+&emsp;&emsp;在 Bootstrap 框架中，导航条和导航从外观上差别不是太多，但在实际使用中导航条要比导航复杂得多。
 
 &emsp;&emsp;导航条是在应用或网站中作为导航页头的响应式基础组件。它们在移动设备上可以折叠（并且可开可关），且在视口（viewport）宽度增加时逐渐变为水平展开模式&nbsp;
 
@@ -18,7 +18,7 @@
 
 【原理分析】
 
-&emsp;&emsp;&ldquo;.navbar&rdquo;样式的主要功能就是设置左右padding和圆角等效果，但它和颜色相关的样式没有进行任何的设置
+&emsp;&emsp;&ldquo;.navbar&rdquo;样式的主要功能就是设置左右 padding 和圆角等效果，但它和颜色相关的样式没有进行任何的设置
 
 <div>
 <pre>.navbar {
@@ -38,7 +38,7 @@
 }</pre>
 </div>
 
-&emsp;&emsp;navbar-nav样式是在导航.nav的基础上重新调整了菜单项的浮动与内外边距。同时也不包括颜色等样式设置，而颜色和其他样式是通过配合父容器&ldquo;navbar-default&rdquo;来一起实现
+&emsp;&emsp;navbar-nav 样式是在导航.nav 的基础上重新调整了菜单项的浮动与内外边距。同时也不包括颜色等样式设置，而颜色和其他样式是通过配合父容器&ldquo;navbar-default&rdquo;来一起实现
 
 &emsp;&emsp;注意：最好使用&nbsp;&lt;nav&gt;&nbsp;元素，如果使用的是通用的&nbsp;&lt;div&gt;&nbsp;元素的话，务必为导航条设置&nbsp;`role="navigation"`&nbsp;属性，这样能够让使用辅助设备的用户明确知道这是一个导航区域
 
@@ -62,12 +62,12 @@
 
 【标题】
 
-&emsp;&emsp;在Web页面制作中，常常在菜单前面都会有一个标题（文字字号比其它文字稍大一些），其实在Bootstrap框架也做了这方面考虑，其通过&ldquo;navbar-header&rdquo;和&ldquo;navbar-brand&rdquo;来实现
+&emsp;&emsp;在 Web 页面制作中，常常在菜单前面都会有一个标题（文字字号比其它文字稍大一些），其实在 Bootstrap 框架也做了这方面考虑，其通过&ldquo;navbar-header&rdquo;和&ldquo;navbar-brand&rdquo;来实现
 
 <div>
 <pre>&lt;div class="navbar navbar-default" role="navigation"&gt;
   　&lt;div class="navbar-header"&gt;
-  　    &lt;a href="##" class="navbar-brand"&gt;小火柴的蓝色理想&lt;/a&gt;
+  　    &lt;a href="##" class="navbar-brand"&gt;的蓝色理想&lt;/a&gt;
   　&lt;/div&gt;
     &lt;ul class="nav navbar-nav"&gt;
        &lt;li class="active"&gt;&lt;a href="##"&gt;HTML&lt;/a&gt;&lt;/li&gt;
@@ -129,7 +129,7 @@
 
 【部件排列】
 
-&emsp;&emsp;通过添加&nbsp;.navbar-left&nbsp;和&nbsp;.navbar-right工具类让导航链接、表单、按钮或文本对齐。两个类都会通过 CSS 设置特定方向的浮动样式。例如，要对齐导航链接，就要把它们放在个分开的、应用了工具类的&lt;ul&gt;标签里
+&emsp;&emsp;通过添加&nbsp;.navbar-left&nbsp;和&nbsp;.navbar-right 工具类让导航链接、表单、按钮或文本对齐。两个类都会通过 CSS 设置特定方向的浮动样式。例如，要对齐导航链接，就要把它们放在个分开的、应用了工具类的&lt;ul&gt;标签里
 
 &emsp;&emsp;这些类是&nbsp;.pull-left&nbsp;和&nbsp;.pull-right&nbsp;的&nbsp;mixin 版本，但是他们被限定在了媒体查询（media query）中，这样可以更容易的在各种尺寸的屏幕上处理导航条组件
 
@@ -137,9 +137,9 @@
 
 【表单】
 
-&emsp;&emsp;有的导航条中会带有搜索表单，Bootstrap框架中提供了一个&ldquo;navbar-form&rdquo;，使用方法很简单，在navbar容器中放置一个带有navbar-form类名的表单即可
+&emsp;&emsp;有的导航条中会带有搜索表单，Bootstrap 框架中提供了一个&ldquo;navbar-form&rdquo;，使用方法很简单，在 navbar 容器中放置一个带有 navbar-form 类名的表单即可
 
-&emsp;&emsp;navbar-left实现左浮动，navbar-right实现右浮动
+&emsp;&emsp;navbar-left 实现左浮动，navbar-right 实现右浮动
 
 <div>
 <pre>&lt;div class="navbar navbar-default" role="navigation"&gt;
@@ -218,13 +218,13 @@
 
 ### 导航条位置
 
-&emsp;&emsp;很多情况下，设计师希望导航条固定在浏览器顶部或底部，这种固定式导航条的应用在移动端开发中更为常见。Bootstrap框架提供了g两种固定导航条的方式：
+&emsp;&emsp;很多情况下，设计师希望导航条固定在浏览器顶部或底部，这种固定式导航条的应用在移动端开发中更为常见。Bootstrap 框架提供了 g 两种固定导航条的方式：
 
 &nbsp; &nbsp;☑&nbsp;&nbsp;.navbar-fixed-top：导航条固定在浏览器窗口顶部
 
 &nbsp;&nbsp; ☑&nbsp;&nbsp;.navbar-fixed-bottom：导航条固定在浏览器窗口底部
 
-&emsp;&emsp;使用方法很简单，只需要在制作导航条最外部容器navbar上追加对应的类名即可
+&emsp;&emsp;使用方法很简单，只需要在制作导航条最外部容器 navbar 上追加对应的类名即可
 
 &emsp;&emsp;这个固定的导航条会遮住页面上的其它内容，除非给&nbsp;&lt;body&gt;&nbsp;元素底部设置了&nbsp;`padding`。提示：导航条的默认高度是 50px
 
@@ -270,9 +270,9 @@
 
 ### 响应式导航条
 
-&emsp;&emsp;Bootstrap的响应式导航条实现如下：
+&emsp;&emsp;Bootstrap 的响应式导航条实现如下：
 
-&emsp;&emsp;1、保证在窄屏时需要折叠的内容必须包裹在带一个div内，并且为这个div加入collapse、navbar-collapse两个类名。最后为这个div添加一个class类名或者id名
+&emsp;&emsp;1、保证在窄屏时需要折叠的内容必须包裹在带一个 div 内，并且为这个 div 加入 collapse、navbar-collapse 两个类名。最后为这个 div 添加一个 class 类名或者 id 名
 
 <div>
 <pre>&lt;div class="collapse navbar-collapse" id="example"&gt;
@@ -307,7 +307,7 @@
 &lt;/button&gt;</pre>
 </div>
 
-&emsp;&emsp;3、并为button添加data-target=".类名/#id名"，究竞是类名还是id名呢？由需要折叠的div来决定。如
+&emsp;&emsp;3、并为 button 添加 data-target=".类名/#id 名"，究竞是类名还是 id 名呢？由需要折叠的 div 来决定。如
 
 <div>
 <pre>&lt;button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#example"&gt;
@@ -318,7 +318,7 @@
 &lt;/button&gt;</pre>
 </div>
 
-&emsp;&emsp;或者，对应class="example"
+&emsp;&emsp;或者，对应 class="example"
 
 <div>
 <pre>&lt;button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".example"&gt;
@@ -356,7 +356,7 @@
 
 ### 反色导航条
 
-&emsp;&emsp;反色导航条其实是Bootstrap框架提供的第二种风格的导航条，与默认的导航条相比，使用方法并无区别，只是将navbar-deafult类名换成navbar-inverse。其变化只是导航条的背景色和文本做了修改
+&emsp;&emsp;反色导航条其实是 Bootstrap 框架提供的第二种风格的导航条，与默认的导航条相比，使用方法并无区别，只是将 navbar-deafult 类名换成 navbar-inverse。其变化只是导航条的背景色和文本做了修改
 
 <div>
 <pre>&lt;div class="navbar navbar-inverse" role="navigation"&gt;
@@ -369,4 +369,3 @@
 </div>
 
 <iframe style="width: 100%; height: 187px;" src="https://demo.xiaohuochai.site/bootstrap/navbar/n10.html" frameborder="0" width="320" height="240"></iframe>
-

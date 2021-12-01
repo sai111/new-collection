@@ -1,30 +1,30 @@
-# 深入理解ajax系列第三篇——响应解码
+# 深入理解 ajax 系列第三篇——响应解码
 
-&emsp;&emsp;我们接收到的响应主体类型可以是多种形式的，包括字符串String、ArrayBuffer对象、二进制Blob对象、JSON对象、javascirpt文件及表示XML文档的Document对象等。下面将针对不同的主体类型，进行相应的响应解码
+&emsp;&emsp;我们接收到的响应主体类型可以是多种形式的，包括字符串 String、ArrayBuffer 对象、二进制 Blob 对象、JSON 对象、javascirpt 文件及表示 XML 文档的 Document 对象等。下面将针对不同的主体类型，进行相应的响应解码
 
 &nbsp;
 
 ### 属性
 
-&emsp;&emsp;在介绍响应解码之前，要先了解[XHR对象](http://www.cnblogs.com/xiaohuochai/p/6036475.html)的属性。一般地，如果接受的数据是字符串，使用responseText即可，这也是最常用的用于接收数据的属性。但如果获取了其他类型的数据，使用responseText可能就不太合适了
+&emsp;&emsp;在介绍响应解码之前，要先了解[XHR 对象](http://www.cnblogs.com/xiaohuochai/p/6036475.html)的属性。一般地，如果接受的数据是字符串，使用 responseText 即可，这也是最常用的用于接收数据的属性。但如果获取了其他类型的数据，使用 responseText 可能就不太合适了
 
 【responseText】
 
-&emsp;&emsp;responseText属性返回从服务器接收到的字符串，该属性为只读。如果本次请求没有成功或者数据不完整，该属性就会等于null。
+&emsp;&emsp;responseText 属性返回从服务器接收到的字符串，该属性为只读。如果本次请求没有成功或者数据不完整，该属性就会等于 null。
 
-&emsp;&emsp;如果服务器返回的数据格式是JSON、字符串、javascript或XML，都可以使用responseText属性
+&emsp;&emsp;如果服务器返回的数据格式是 JSON、字符串、javascript 或 XML，都可以使用 responseText 属性
 
 【response】
 
-&emsp;&emsp;response属性为只读，返回接收到的数据体。它的类型可以是ArrayBuffer、Blob、Document、JSON对象、或者一个字符串，这由XMLHttpRequest.responseType属性的值决定
+&emsp;&emsp;response 属性为只读，返回接收到的数据体。它的类型可以是 ArrayBuffer、Blob、Document、JSON 对象、或者一个字符串，这由 XMLHttpRequest.responseType 属性的值决定
 
-&emsp;&emsp;如果本次请求没有成功或者数据不完整，该属性就会等于null
+&emsp;&emsp;如果本次请求没有成功或者数据不完整，该属性就会等于 null
 
 &emsp;&emsp;注意：IE9-浏览器不支持
 
 【responseType】
 
-&emsp;&emsp;responseType属性用来指定服务器返回数据(xhr.response)的类型
+&emsp;&emsp;responseType 属性用来指定服务器返回数据(xhr.response)的类型
 
 <div>
 <pre>&ldquo;&rdquo;：字符串(默认值)
@@ -37,23 +37,23 @@
 
 【responseXML】
 
-&emsp;&emsp;responseXML属性返回从服务器接收到的Document对象，该属性为只读。如果本次请求没有成功，或者数据不完整，或者不能被解析为XML或HTML，该属性等于null
+&emsp;&emsp;responseXML 属性返回从服务器接收到的 Document 对象，该属性为只读。如果本次请求没有成功，或者数据不完整，或者不能被解析为 XML 或 HTML，该属性等于 null
 
 【overrideMimeType()】
 
-&emsp;&emsp;该方法用来指定服务器返回数据的MIME类型。该方法必须在send()之前调用
+&emsp;&emsp;该方法用来指定服务器返回数据的 MIME 类型。该方法必须在 send()之前调用
 
 &emsp;&emsp;传统上，如果希望从服务器取回二进制数据，就要使用这个方法，人为将数据类型伪装成文本数据
 
-&emsp;&emsp;但是，这种方法很麻烦，在XMLHttpRequest版本升级以后，一般采用指定responseType的方法
+&emsp;&emsp;但是，这种方法很麻烦，在 XMLHttpRequest 版本升级以后，一般采用指定 responseType 的方法
 
 &nbsp;
 
 ### 字符串
 
-&emsp;&emsp;如果服务器返回的结果是一个字符串，则直接使用responseText属性解析即可
+&emsp;&emsp;如果服务器返回的结果是一个字符串，则直接使用 responseText 属性解析即可
 
-&emsp;&emsp;关于ajax()函数的封装，已经在[上一篇博客](http://www.cnblogs.com/xiaohuochai/p/6486643.html#anchor3)中详细介绍过，这里就不再赘述。直接调用[ajax.js](http://files.cnblogs.com/files/xiaohuochai/ajax.js)使用
+&emsp;&emsp;关于 ajax()函数的封装，已经在[上一篇博客](http://www.cnblogs.com/xiaohuochai/p/6486643.html#anchor3)中详细介绍过，这里就不再赘述。直接调用[ajax.js](http://files.cnblogs.com/files/xiaohuochai/ajax.js)使用
 
 <div>
 <pre>&lt;button id="btn"&gt;取得响应&lt;/button&gt;
@@ -81,7 +81,7 @@ btn.onclick = function(){
 
 ### JSON
 
-&emsp;&emsp;使用ajax最常用的传输方式就是使用JSON字符串，直接使用responseText属性解析即可
+&emsp;&emsp;使用 ajax 最常用的传输方式就是使用 JSON 字符串，直接使用 responseText 属性解析即可
 
 <div>
 <pre>&lt;button id="btn"&gt;取得响应&lt;/button&gt;
@@ -115,9 +115,9 @@ btn.onclick = function(){
 
 ### XML
 
-&emsp;&emsp;XML在JSON出现之前，是网络上常用的数据传输格式，但由于其格式较笨重，所以用的较少
+&emsp;&emsp;XML 在 JSON 出现之前，是网络上常用的数据传输格式，但由于其格式较笨重，所以用的较少
 
-&emsp;&emsp;接收XML文档时，使用responseXML来对数据进行解析
+&emsp;&emsp;接收 XML 文档时，使用 responseXML 来对数据进行解析
 
 <div>
 <pre>&lt;button id="btn"&gt;取得响应&lt;/button&gt;
@@ -205,7 +205,7 @@ function ajax(obj){
 
 ### js
 
-&emsp;&emsp;使用ajax也可以接收js文件。仍然使用responseText来接收数据，但要使用eval()来执行代码
+&emsp;&emsp;使用 ajax 也可以接收 js 文件。仍然使用 responseText 来接收数据，但要使用 eval()来执行代码
 
 <div>
 <pre>&lt;button id="btn"&gt;取得响应&lt;/button&gt;
@@ -229,7 +229,7 @@ btn.onclick = function(){
 </div>
 <div>
 <pre>var obj = {
-    '姓名':'小火柴',
+    '姓名':'',
     '年龄':28,
     '性别':'男'
 }</pre>
@@ -239,11 +239,11 @@ btn.onclick = function(){
 
 ### blob
 
-&emsp;&emsp;在javascript中，[Blob](http://www.cnblogs.com/xiaohuochai/p/6535130.html)通常表示二进制数据。但在实际Web应用中，Blob更多是图片二进制形式的上传与下载，虽然其可以实现几乎任意文件的二进制传输
+&emsp;&emsp;在 javascript 中，[Blob](http://www.cnblogs.com/xiaohuochai/p/6535130.html)通常表示二进制数据。但在实际 Web 应用中，Blob 更多是图片二进制形式的上传与下载，虽然其可以实现几乎任意文件的二进制传输
 
-&emsp;&emsp;使用ajax接收blob数据，需要使用response来接收，并且将responseType设置为'blob'
+&emsp;&emsp;使用 ajax 接收 blob 数据，需要使用 response 来接收，并且将 responseType 设置为'blob'
 
-&emsp;&emsp;注意：要完全兼容IE10+浏览器，需要将xhr.responseType设置在xhr.open()和xhr.send()方法之间
+&emsp;&emsp;注意：要完全兼容 IE10+浏览器，需要将 xhr.responseType 设置在 xhr.open()和 xhr.send()方法之间
 
 <div>
 <pre>&lt;button id="btn"&gt;取得响应&lt;/button&gt;
@@ -321,9 +321,9 @@ function ajax(obj){
 
 ### arraybuffer
 
-&emsp;&emsp;[arraybuffer](http://www.cnblogs.com/xiaohuochai/p/6534621.html#anchor2)代表储存二进制数据的一段内存，而blob则用于表示二进制数据。通过ajax接收arraybuffer，然后将其转换为blob数据，从而进行进一步的操作
+&emsp;&emsp;[arraybuffer](http://www.cnblogs.com/xiaohuochai/p/6534621.html#anchor2)代表储存二进制数据的一段内存，而 blob 则用于表示二进制数据。通过 ajax 接收 arraybuffer，然后将其转换为 blob 数据，从而进行进一步的操作
 
- &emsp;&emsp;responseType设置为arraybuffer，然后将response作为new Blob()构造函数的参数传递，生成blob对象
+&emsp;&emsp;responseType 设置为 arraybuffer，然后将 response 作为 new Blob()构造函数的参数传递，生成 blob 对象
 
 <div>
 <pre>&lt;button id="btn"&gt;取得响应&lt;/button&gt;

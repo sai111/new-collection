@@ -1,16 +1,16 @@
-# Bootstrap提示信息
+# Bootstrap 提示信息
 
-&emsp;&emsp;在Bootstrap中，有一些组件用于提示信息，如&nbsp;标签、徽章、巨幕和页头。本文将详细介绍Bootstrap提示信息
+&emsp;&emsp;在 Bootstrap 中，有一些组件用于提示信息，如&nbsp;标签、徽章、巨幕和页头。本文将详细介绍 Bootstrap 提示信息
 
 &nbsp;
 
 ### 标签
 
-&emsp;&emsp;在一些Web页面中常常会添加一个标签用来告诉用户一些额外的信息，比如说在导航上添加了一个新导航项，可能就会加一个&ldquo;new&rdquo;标签，来告诉用户
+&emsp;&emsp;在一些 Web 页面中常常会添加一个标签用来告诉用户一些额外的信息，比如说在导航上添加了一个新导航项，可能就会加一个&ldquo;new&rdquo;标签，来告诉用户
 
-&emsp;&emsp;在Bootstrap框架中特意将这样的效果提取出来成为一个标签组件，并且以&ldquo;.label&rdquo;样式来实现高亮显示
+&emsp;&emsp;在 Bootstrap 框架中特意将这样的效果提取出来成为一个标签组件，并且以&ldquo;.label&rdquo;样式来实现高亮显示
 
-&emsp;&emsp;使用方法很简单，可以在使用span这样的行内标签
+&emsp;&emsp;使用方法很简单，可以在使用 span 这样的行内标签
 
 <div>
 <pre>&lt;h3&gt;Example heading &lt;span class="label label-default"&gt;New&lt;/span&gt;&lt;/h3&gt;</pre>
@@ -35,7 +35,7 @@
 
 【颜色设置】
 
-&emsp;&emsp;和按钮元素button类似，label样式也提供了多种颜色：
+&emsp;&emsp;和按钮元素 button 类似，label 样式也提供了多种颜色：
 
 &emsp;&emsp;☑&nbsp;&nbsp; label-default:默认标签，深灰色
 
@@ -68,9 +68,9 @@
 
 &emsp;&emsp;从某种意义上来说，徽章效果和前面介绍的标签效果极其相似。也用来做一些提示信息使用。常出现的是一些系统发出的信息，比如系统提示有多少信息未读&nbsp;
 
-&emsp;&emsp;在Bootstrap框架中，把这种效果称作为徽章效果，使用&ldquo;badge&rdquo;样式来实现
+&emsp;&emsp;在 Bootstrap 框架中，把这种效果称作为徽章效果，使用&ldquo;badge&rdquo;样式来实现
 
-&emsp;&emsp;可以像标签一样，使用span标签来制作，然后加入`badge`类
+&emsp;&emsp;可以像标签一样，使用 span 标签来制作，然后加入`badge`类
 
 <div>
 <pre>&lt;a href="#"&gt;Inbox &lt;span class="badge"&gt;42&lt;/span&gt;&lt;/a&gt;</pre>
@@ -80,7 +80,7 @@
 
 【自动隐藏】
 
-&emsp;&emsp;如果没有新的或未读的信息条目，也就是说不包含任何内容，徽章组件能够自动隐藏（通过CSS的&nbsp;`:empty`&nbsp;选择符实现)&nbsp;&nbsp;
+&emsp;&emsp;如果没有新的或未读的信息条目，也就是说不包含任何内容，徽章组件能够自动隐藏（通过 CSS 的&nbsp;`:empty`&nbsp;选择符实现)&nbsp;&nbsp;
 
 <div>
 <pre>.badge:empty {
@@ -95,7 +95,7 @@
 
 【按钮徽章】
 
-&emsp;&emsp;徽章在按钮元素button和胶囊形导航nav-pills也有类似的样式，只不过颜色不同
+&emsp;&emsp;徽章在按钮元素 button 和胶囊形导航 nav-pills 也有类似的样式，只不过颜色不同
 
 <div>
 <pre>&lt;ul class="nav nav-pills" role="tablist"&gt;
@@ -118,7 +118,7 @@
 
 <div>
 <pre>&lt;div class="jumbotron"&gt;
-  &lt;h1&gt;小火柴的蓝色理想&lt;/h1&gt;
+  &lt;h1&gt;的蓝色理想&lt;/h1&gt;
   &lt;p&gt;好的代码像粥一样，都是用时间熬出来的&lt;/p&gt;
   &lt;p&gt;&lt;a class="btn btn-primary btn-lg" href="#" role="button"&gt;Learn more&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;</pre>
@@ -131,7 +131,7 @@
 <div>
 <pre>&lt;div class="container"&gt;
     &lt;div class="jumbotron"&gt;
-        &lt;h1&gt;小火柴的蓝色理想&lt;/h1&gt;
+        &lt;h1&gt;的蓝色理想&lt;/h1&gt;
         &lt;p&gt;好的代码像粥一样，都是用时间熬出来的&lt;/p&gt;
         &lt;p&gt;&lt;a class="btn btn-primary btn-lg" href="#" role="button"&gt;Learn more&lt;/a&gt;&lt;/p&gt;
     &lt;/div&gt;
@@ -160,4 +160,3 @@
 </div>
 
 <iframe style="width: 100%; height: 150px;" src="https://demo.xiaohuochai.site/bootstrap/label/l9.html" frameborder="0" width="320" height="240"></iframe>
-

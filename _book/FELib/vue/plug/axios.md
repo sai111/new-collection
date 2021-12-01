@@ -1,6 +1,6 @@
-# HTTP库Axios
+# HTTP 库 Axios
 
-&emsp;&emsp;本文将详细介绍HTTP库Axios
+&emsp;&emsp;本文将详细介绍 HTTP 库 Axios
 
 &nbsp;
 
@@ -10,7 +10,7 @@
 
 【安装】
 
-&emsp;&emsp;在Vue中使用，最好安装两个模块axios 和vue-axios
+&emsp;&emsp;在 Vue 中使用，最好安装两个模块 axios 和 vue-axios
 
 <div>
 <pre>$ npm install axios vue-axios --save</pre>
@@ -34,7 +34,7 @@ import VueAxios from 'vue-axios'</pre>
 
 【特性】
 
-&emsp;&emsp;1、可以从浏览器中创建[XHR对象](http://www.cnblogs.com/xiaohuochai/p/6036475.html)
+&emsp;&emsp;1、可以从浏览器中创建[XHR 对象](http://www.cnblogs.com/xiaohuochai/p/6036475.html)
 
 &emsp;&emsp;2、可以从[nodeJS](http://www.cnblogs.com/xiaohuochai/p/6940560.html)中创建[HTTP](http://www.cnblogs.com/xiaohuochai/p/6392010.html)请求
 
@@ -46,9 +46,9 @@ import VueAxios from 'vue-axios'</pre>
 
 &emsp;&emsp;6、可以取消请求
 
-&emsp;&emsp;7、可以自动转换JSON数据
+&emsp;&emsp;7、可以自动转换 JSON 数据
 
-&emsp;&emsp;8、客户端支持防御XSRF
+&emsp;&emsp;8、客户端支持防御 XSRF
 
 &nbsp;
 
@@ -56,7 +56,7 @@ import VueAxios from 'vue-axios'</pre>
 
 &emsp;&emsp;下面是一些简单的请求实例
 
-【get请求】
+【get 请求】
 
 &emsp;&emsp;仅仅向后端请求数据
 
@@ -70,15 +70,15 @@ import VueAxios from 'vue-axios'</pre>
   });</pre>
 </div>
 
-&emsp;&emsp;通过URL向后端发送数据，要使用params属性，params属性包含即将与请求一起发送的数据
+&emsp;&emsp;通过 URL 向后端发送数据，要使用 params 属性，params 属性包含即将与请求一起发送的数据
 
-&emsp;&emsp;运行下列代码后，请求URL变更为index.php?id=12345&amp;text=%E5%B0%8F%E7%81%AB%E6%9F%B4
+&emsp;&emsp;运行下列代码后，请求 URL 变更为 index.php?id=12345&amp;text=%E5%B0%8F%E7%81%AB%E6%9F%B4
 
 <div>
 <pre>axios.get('index.php',{
   params:{
     id:12345,
-&emsp;&emsp; text:'小火柴'
+&emsp;&emsp; text:''
   }
 }).then((response)=&gt;{
   console.log(response)
@@ -87,7 +87,7 @@ import VueAxios from 'vue-axios'</pre>
 })</pre>
 </div>
 
-&emsp;&emsp;当然，也可以把数据直接写到URL中
+&emsp;&emsp;当然，也可以把数据直接写到 URL 中
 
 <div>
 <pre>// 为给定 ID 的 user 创建请求
@@ -102,18 +102,18 @@ axios.get('/user?ID=12345')
 </pre>
 </div>
 
-【post请求】
+【post 请求】
 
-&emsp;&emsp;一般来说，post请求更多的是要提交数据，params属性里的数据会出现在请求主体中
+&emsp;&emsp;一般来说，post 请求更多的是要提交数据，params 属性里的数据会出现在请求主体中
 
-&emsp;&emsp;注意：如果是axios.create()方法中的params属性，则其里面的数据会出现在URL参数中
+&emsp;&emsp;注意：如果是 axios.create()方法中的 params 属性，则其里面的数据会出现在 URL 参数中
 
-&emsp;&emsp;但实际上，post方法不需要使用params属性，它的第二个参数就是要发送的数据
+&emsp;&emsp;但实际上，post 方法不需要使用 params 属性，它的第二个参数就是要发送的数据
 
 <div>
 <pre>axios.post('index.php',{
   id:12345,
-  text:'小火柴'
+  text:''
 }).then((response)=&gt;{
   console.log(response)
 }).catch((error)=&gt;{
@@ -348,7 +348,7 @@ axios#patch(url[, data[, config]])</pre>
 })
 HTTP.post('index.php',{
   id:12345,
-  text:'小火柴'
+  text:''
 }).then((response)=&gt;{
   console.log(response)
 }).catch((error)=&gt;{
@@ -399,7 +399,7 @@ HTTP.post('index.php',{
 
 &emsp;&emsp;可以指定将被用在各个请求的配置默认值
 
-【全局的axios默认值】
+【全局的 axios 默认值】
 
 <div>
 <pre>axios.defaults.baseURL = 'https://api.example.com';
@@ -556,7 +556,7 @@ let HTTP = axios.create({
 })
 HTTP.post('index.php',{
   id:12345,
-  text:'小火柴'
+  text:''
 },{
   cancelToken: source.token,
 }).then((response)=&gt;{
@@ -576,4 +576,3 @@ source.cancel('Operation canceled by the user.'); </pre>
 <div>
 <pre>Request canceled Operation canceled by the user.</pre>
 </div>
-

@@ -1,15 +1,12 @@
-# 基于vue现有项目的服务器端渲染SSR改造
+# 基于 vue 现有项目的服务器端渲染 SSR 改造
 
-&emsp;&emsp;不论是官网教程，还是官方DEMO，都是从0开始的服务端渲染配置。对于现有项目的服务器端渲染SSR改造，特别是基于vue cli生成的项目，没有特别提及。本文就小火柴的前端小站这个前台项目进行SSR改造
-
- 
+&emsp;&emsp;不论是官网教程，还是官方 DEMO，都是从 0 开始的服务端渲染配置。对于现有项目的服务器端渲染 SSR 改造，特别是基于 vue cli 生成的项目，没有特别提及。本文就的前端小站这个前台项目进行 SSR 改造
 
 &nbsp;
 
 ### 效果
 
-&emsp;&emsp;下面是经过SSR改造后的[前端小站xiaohuochai.cc](https://xiaohuochai.cc)的网站效果，[github源码地址](https://github.com/littlematch0123/blog-client)
-
+&emsp;&emsp;下面是经过 SSR 改造后的[前端小站 xiaohuochai.cc](https://xiaohuochai.cc)的网站效果，[github 源码地址](https://github.com/littlematch0123/blog-client)
 
 <iframe style="width: 100%; height: 600px;" src="https://www.xiaohuochai.cc" frameborder="0" width="260" height="600"></iframe>
 
@@ -19,11 +16,11 @@
 
 【定义】
 
-&emsp;&emsp;服务器渲染的Vue应用程序被认为是"同构"或"通用"，因为应用程序的大部分代码都可以在服务器和客户端上运行
+&emsp;&emsp;服务器渲染的 Vue 应用程序被认为是"同构"或"通用"，因为应用程序的大部分代码都可以在服务器和客户端上运行
 
 【优点】
 
-&emsp;&emsp;与传统SPA相比，服务器端渲染(SSR)的优势主要在于：
+&emsp;&emsp;与传统 SPA 相比，服务器端渲染(SSR)的优势主要在于：
 
 &emsp;&emsp;1、更好的 SEO，搜索引擎爬虫抓取工具可以直接查看完全渲染的页面
 
@@ -33,35 +30,31 @@
 
 &emsp;&emsp;无需等待所有的 JavaScript 都完成下载并执行，才显示服务器渲染的标记，所以用户将会更快速地看到完整渲染的页面，通常可以产生更好的用户体验
 
- 
-
 &nbsp;
 
 ### 思路
 
-&emsp;&emsp;下面以官方的SSR服务器端渲染流程图为例，进行概要说明
+&emsp;&emsp;下面以官方的 SSR 服务器端渲染流程图为例，进行概要说明
 
 ![ssr](https://pic.xiaohuochai.site/blogssr1.png)
 
-&emsp;&emsp;1、universal Application Code是服务器端和浏览器端通用的代码
+&emsp;&emsp;1、universal Application Code 是服务器端和浏览器端通用的代码
 
-&emsp;&emsp;2、app.js是应用程序的入口entry，对应vue cli生成的项目的main.js文件
+&emsp;&emsp;2、app.js 是应用程序的入口 entry，对应 vue cli 生成的项目的 main.js 文件
 
-&emsp;&emsp;3、entry-client.js是客户端入口，仅运行于浏览器，entry-server.js是服务器端入口，仅运行于服务器
+&emsp;&emsp;3、entry-client.js 是客户端入口，仅运行于浏览器，entry-server.js 是服务器端入口，仅运行于服务器
 
-&emsp;&emsp;4、entry-client和entry-server这两个文件都需要通过webpack构建，其中entry-client需要通过webpack.server.config.js文件打包，entry-server需要通过webpack.server.config.js文件打包
+&emsp;&emsp;4、entry-client 和 entry-server 这两个文件都需要通过 webpack 构建，其中 entry-client 需要通过 webpack.server.config.js 文件打包，entry-server 需要通过 webpack.server.config.js 文件打包
 
-&emsp;&emsp;5、entry-client构建后的client Bundle打包文件是vue-ssr-client-manifest.json，entry-server构建后的server Bundle打包文件是vue-ssr-server-bundle.json
+&emsp;&emsp;5、entry-client 构建后的 client Bundle 打包文件是 vue-ssr-client-manifest.json，entry-server 构建后的 server Bundle 打包文件是 vue-ssr-server-bundle.json
 
-&emsp;&emsp;6、server.js文件将客户端打包文件vue-ssr-client-manifest.json、服务器端打包文件vue-ssr-server-bundle.json和HTML模板混合，渲染成HTML
-
- 
+&emsp;&emsp;6、server.js 文件将客户端打包文件 vue-ssr-client-manifest.json、服务器端打包文件 vue-ssr-server-bundle.json 和 HTML 模板混合，渲染成 HTML
 
 &nbsp;
 
-### webpack配置
+### webpack 配置
 
-&emsp;&emsp;基于vue-cli生成的项目的build目录结构如下
+&emsp;&emsp;基于 vue-cli 生成的项目的 build 目录结构如下
 
 ```
 build
@@ -73,16 +66,19 @@ build
     - webpack.dev.conf.js
     - webpack.prod.conf.js
 ```
-&emsp;&emsp;前面3个文件无需修改，只需修改*.*.conf.js文件
 
-&emsp;&emsp;1、修改vue-loader.conf.js，将extract的值设置为false，因为服务器端渲染会自动将CSS内置。如果使用该extract，则会引入link标签载入CSS，从而导致相同的CSS资源重复加载
+&emsp;&emsp;前面 3 个文件无需修改，只需修改*.*.conf.js 文件
+
+&emsp;&emsp;1、修改 vue-loader.conf.js，将 extract 的值设置为 false，因为服务器端渲染会自动将 CSS 内置。如果使用该 extract，则会引入 link 标签载入 CSS，从而导致相同的 CSS 资源重复加载
+
 ```
 -    extract: isProduction
 +    extract: false
 ```
-&emsp;&emsp;2、修改webpack.base.conf.js
 
-&emsp;&emsp;只需修改entry入门配置即可
+&emsp;&emsp;2、修改 webpack.base.conf.js
+
+&emsp;&emsp;只需修改 entry 入门配置即可
 
 ```
 ...
@@ -94,9 +90,10 @@ module.exports = {
   },
 ...
 ```
-&emsp;&emsp;3、修改webpack.prod.conf.js
 
-&emsp;&emsp;包括应用vue-server-renderer、去除HtmlWebpackPlugin、增加client环境变量
+&emsp;&emsp;3、修改 webpack.prod.conf.js
+
+&emsp;&emsp;包括应用 vue-server-renderer、去除 HtmlWebpackPlugin、增加 client 环境变量
 
 ```
 'use strict'
@@ -141,7 +138,8 @@ const webpackConfig = merge(baseWebpackConfig, {
 ...
 module.exports = webpackConfig
 ```
-&emsp;&emsp;4、新增webpack.server.conf.js
+
+&emsp;&emsp;4、新增 webpack.server.conf.js
 
 ```
 const webpack = require('webpack')
@@ -169,15 +167,14 @@ module.exports = merge(baseConfig, {
   ]
 })
 ```
- 
 
 &nbsp;
 
 ### 入口配置
 
-&emsp;&emsp;在浏览器端渲染中，入口文件是main.js，而到了服务器端渲染，除了基础的main.js，还需要配置entry-client.js和entry-server.js
+&emsp;&emsp;在浏览器端渲染中，入口文件是 main.js，而到了服务器端渲染，除了基础的 main.js，还需要配置 entry-client.js 和 entry-server.js
 
-&emsp;&emsp;1、修改main.js
+&emsp;&emsp;1、修改 main.js
 
 ```
 import Vue from 'vue'
@@ -205,9 +202,10 @@ Vue.use(async)
 +　return { app, router, store }
 +}
 ```
-&emsp;&emsp;2、新增entry-client.js
 
-&emsp;&emsp;后面会介绍到asyncData方法，但是asyncData方法只能用于路由绑定的组件，如果是初始数据则可以直接在entry-client.js中获取
+&emsp;&emsp;2、新增 entry-client.js
+
+&emsp;&emsp;后面会介绍到 asyncData 方法，但是 asyncData 方法只能用于路由绑定的组件，如果是初始数据则可以直接在 entry-client.js 中获取
 
 ```
 /* eslint-disable */
@@ -277,7 +275,8 @@ router.onReady(() => {
   app.$mount('#root')
 })
 ```
-&emsp;&emsp;3、新增entry-sever.js
+
+&emsp;&emsp;3、新增 entry-sever.js
 
 ```
 /* eslint-disable */
@@ -305,7 +304,6 @@ export default context => new Promise((resolve, reject) => {
   }, reject)
 })
 ```
- 
 
 &nbsp;
 
@@ -313,7 +311,7 @@ export default context => new Promise((resolve, reject) => {
 
 &emsp;&emsp;由于代码需要在服务器端和浏览器端共用，所以需要修改组件，使之在服务器端运行时不会报错
 
-&emsp;&emsp;1、修改router路由文件，给每个请求一个新的路由router实例
+&emsp;&emsp;1、修改 router 路由文件，给每个请求一个新的路由 router 实例
 
 ```
 import Vue from 'vue'
@@ -336,7 +334,8 @@ Vue.use(Router)
 &emsp;&emsp;})
 +}
 ```
-&emsp;&emsp;2、修改状态管理vuex文件，给每个请求一个新的vuex实例
+
+&emsp;&emsp;2、修改状态管理 vuex 文件，给每个请求一个新的 vuex 实例
 
 ```
 import Vue from 'vue'
@@ -355,11 +354,12 @@ Vue.use(Vuex)
 &emsp;&emsp;})
 +}
 ```
-&emsp;&emsp;3、使用asyncData方法来获取异步数据
 
-&emsp;&emsp;要特别注意的是，由于asyncData只能通过路由发生作用，使用是非路由组件的异步数据获取最好移动到路由组件中
+&emsp;&emsp;3、使用 asyncData 方法来获取异步数据
 
-&emsp;&emsp;如果要通过asyncData获取多个数据，可以使用Promise.all()方法
+&emsp;&emsp;要特别注意的是，由于 asyncData 只能通过路由发生作用，使用是非路由组件的异步数据获取最好移动到路由组件中
+
+&emsp;&emsp;如果要通过 asyncData 获取多个数据，可以使用 Promise.all()方法
 
 ```
 asyncData({ store }) {
@@ -370,9 +370,10 @@ asyncData({ store }) {
     ])
 }
 ```
-&emsp;&emsp;如果该异步数据是全局通用的，可以在entry-client.js方法中直接获取
 
-&emsp;&emsp;将TheHeader.vue通用头部组件获取异步数据的代码移动到entry-client.js方法中进行获取
+&emsp;&emsp;如果该异步数据是全局通用的，可以在 entry-client.js 方法中直接获取
+
+&emsp;&emsp;将 TheHeader.vue 通用头部组件获取异步数据的代码移动到 entry-client.js 方法中进行获取
 
 ```
 // TheHeader.vue
@@ -408,7 +409,8 @@ asyncData({ store }) {
 -      !userCount && dispatch(LOAD_USERS_ASYNC)
 -    },
 ```
-&emsp;&emsp;将Post.vue中的异步数据通过asyncData进行获取
+
+&emsp;&emsp;将 Post.vue 中的异步数据通过 asyncData 进行获取
 
 ```
 // post.vue
@@ -423,7 +425,8 @@ export default {
 -  },
 ...
 ```
-&emsp;&emsp;4、将全局css从main.js移动到App.vue的内联style样式中，因为main.js中未设置css文件解析
+
+&emsp;&emsp;4、将全局 css 从 main.js 移动到 App.vue 的内联 style 样式中，因为 main.js 中未设置 css 文件解析
 
 ```
 // main.js
@@ -434,10 +437,12 @@ export default {
 ...
 </style>
 ```
-&emsp;&emsp;5、由于post组件的模块module.js中需要对数据通过window.atob()方法进行base64解析，而nodeJS环境下无window对象，会报错。于是，代码修改如下
+
+&emsp;&emsp;5、由于 post 组件的模块 module.js 中需要对数据通过 window.atob()方法进行 base64 解析，而 nodeJS 环境下无 window 对象，会报错。于是，代码修改如下
+
 ```
 // components/Post/module
-- text: decodeURIComponent(escape(window.atob(doc.content))) 
+- text: decodeURIComponent(escape(window.atob(doc.content)))
 + text: typeof window === 'object' ? decodeURIComponent(escape(window.atob(doc.content))) : ''
 ```
 
@@ -445,11 +450,11 @@ export default {
 
 ### 服务器配置
 
-&emsp;&emsp;1、在根目录下，新建server.js文件
+&emsp;&emsp;1、在根目录下，新建 server.js 文件
 
-&emsp;&emsp;由于在webpack中去掉了HTMLWebpackPlugin插件，而是通过nodejs来处理模板，同时也就缺少了该插件设置的HTML文件压缩功能
+&emsp;&emsp;由于在 webpack 中去掉了 HTMLWebpackPlugin 插件，而是通过 nodejs 来处理模板，同时也就缺少了该插件设置的 HTML 文件压缩功能
 
-&emsp;&emsp;需要在server.js文件中安装html-minifier来实现HTML文件压缩
+&emsp;&emsp;需要在 server.js 文件中安装 html-minifier 来实现 HTML 文件压缩
 
 ```
 const express = require('express')
@@ -482,7 +487,7 @@ app.get('*', (req, res) => {
   }
 
   const context = {
-    title: '小火柴的前端小站',
+    title: '的前端小站',
     url: req.url
   }
   renderer.renderToString(context, (err, html) => {
@@ -499,14 +504,17 @@ app.listen(8080, () => {
   console.log(`vue ssr started at localhost: 8080`)
 })
 ```
-&emsp;&emsp;2、修改package.json文件
+
+&emsp;&emsp;2、修改 package.json 文件
+
 ```
 -     "build": "node build/build.js",
 +    "build:client": "node build/build.js",
 +    "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.conf.js --progress --hide-modules",
 +    "build": "rimraf dist && npm run build:client && npm run build:server"
 ```
-&emsp;&emsp;3、修改index.html文件
+
+&emsp;&emsp;3、修改 index.html 文件
 
 ```
 <!DOCTYPE html>
@@ -515,20 +523,24 @@ app.listen(8080, () => {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <link rel="shortcut icon" href="/static/favicon.ico">
-    <title>小火柴的蓝色理想</title>
+    <title>的蓝色理想</title>
   </head>
   <body>
      <!--vue-ssr-outlet-->
   </body>
 </html>
 ```
+
 &emsp;&emsp;4、取消代理
 
-&emsp;&emsp;如果继续使用代理如/api代理到后端接口，则可能会报如下错误
+&emsp;&emsp;如果继续使用代理如/api 代理到后端接口，则可能会报如下错误
+
 ```
 error：connect ECONNREFUSED 127.0.0.1：80
 ```
-&emsp;&emsp;直接写带有http的后端接口地址即可
+
+&emsp;&emsp;直接写带有 http 的后端接口地址即可
+
 ```
 const API_HOSTNAME = 'http://192.168.1.103:4000'
 ```
@@ -538,21 +550,26 @@ const API_HOSTNAME = 'http://192.168.1.103:4000'
 ### 测试
 
 &emsp;&emsp;1、安装依赖包
+
 ```
 cnpm install --save-dev vue-server-renderer
 ```
+
 &emsp;&emsp;2、构建
+
 ```
 npm run build
 ```
+
 &emsp;&emsp;3、运行
+
 ```
 node server.js
 ```
+
 &emsp;&emsp;点击右键，查看网页源代码。结果如下，说明网站已经实现了服务器端渲染
 
 ![ssr](https://pic.xiaohuochai.site/blog/blogssr2.png)
- 
 
 &nbsp;
 
@@ -560,9 +577,9 @@ node server.js
 
 【pm2】
 
-&emsp;&emsp;由于该网站需要守护nodejs程序，使用pm2部署较为合适
+&emsp;&emsp;由于该网站需要守护 nodejs 程序，使用 pm2 部署较为合适
 
-&emsp;&emsp;在项目根目录下，新建一个ecosystem.json文件，内容如下
+&emsp;&emsp;在项目根目录下，新建一个 ecosystem.json 文件，内容如下
 
 ```
 {
@@ -593,11 +610,12 @@ node server.js
   }
 }
 ```
+
 【CDN】
 
-&emsp;&emsp;由于项目实际上既有静态资源，也有nodeJS程序。因此，最好把静态资源上传到七牛CDN上
+&emsp;&emsp;由于项目实际上既有静态资源，也有 nodeJS 程序。因此，最好把静态资源上传到七牛 CDN 上
 
-&emsp;&emsp;自行选择服务器的一个目录，新建upload.js文件
+&emsp;&emsp;自行选择服务器的一个目录，新建 upload.js 文件
 
 ```
 var fs = require('fs');
@@ -632,7 +650,7 @@ function uploadFile (localFile) {
   } else {
     console.log(respInfo.statusCode);
     console.log(respBody);
-  }  
+  }
 })
 }
 // 目录上传方法
@@ -661,17 +679,23 @@ fs.exists(staticPath, function (exists) {
   }
 })
 ```
+
 【post-deploy】
 
-&emsp;&emsp;然后，修改ecosystem.json文件中的post-deploy项
+&emsp;&emsp;然后，修改 ecosystem.json 文件中的 post-deploy 项
+
 ```
 "source ~/.nvm/nvm.sh && cnpm install && npm run build && node /home/xiaohuochai/blog/client/upload.js&& pm2 startOrRestart ecosystem.json --env production"
 ```
-&emsp;&emsp;但是，经过实际测试，在服务器端进行构建build，极其容易造成服务器死机。于是，还是在本地构建完成后，上传dist文件到服务器再进行相关操作
+
+&emsp;&emsp;但是，经过实际测试，在服务器端进行构建 build，极其容易造成服务器死机。于是，还是在本地构建完成后，上传 dist 文件到服务器再进行相关操作
+
 ```
 "source ~/.nvm/nvm.sh && cnpm install && node /home/xiaohuochai/blog/client/upload.js&& pm2 startOrRestart ecosystem.json --env production"
 ```
-&emsp;&emsp;修改项目的静态资源地址为CDN地址，API地址为服务器API地址
+
+&emsp;&emsp;修改项目的静态资源地址为 CDN 地址，API 地址为服务器 API 地址
+
 ```
 // config/index.js
 assetsPublicPath: 'https://static.xiaohuochai.site/client/'
@@ -679,9 +703,10 @@ assetsPublicPath: 'https://static.xiaohuochai.site/client/'
 // src/constants/API.js
 const API_HOSTNAME = 'https://api.xiaohuochai.cc'
 ```
+
 【nginx】
 
-&emsp;&emsp;如果要使用域名对项目进行访问，还需要进行nginx配置
+&emsp;&emsp;如果要使用域名对项目进行访问，还需要进行 nginx 配置
 
 ```
 upstream client {
@@ -716,20 +741,18 @@ server{
                 proxy_redirect off;
 
     }
-} 
+}
 ```
- # 基于vue现有项目的服务器端渲染SSR改造
 
-&emsp;&emsp;不论是官网教程，还是官方DEMO，都是从0开始的服务端渲染配置。对于现有项目的服务器端渲染SSR改造，特别是基于vue cli生成的项目，没有特别提及。本文就小火柴的前端小站这个前台项目进行SSR改造
+# 基于 vue 现有项目的服务器端渲染 SSR 改造
 
- 
+&emsp;&emsp;不论是官网教程，还是官方 DEMO，都是从 0 开始的服务端渲染配置。对于现有项目的服务器端渲染 SSR 改造，特别是基于 vue cli 生成的项目，没有特别提及。本文就的前端小站这个前台项目进行 SSR 改造
 
 &nbsp;
 
 ### 效果
 
-&emsp;&emsp;下面是经过SSR改造后的[前端小站xiaohuochai.cc](https://xiaohuochai.cc)的网站效果，[github源码地址](https://github.com/littlematch0123/blog-client)
-
+&emsp;&emsp;下面是经过 SSR 改造后的[前端小站 xiaohuochai.cc](https://xiaohuochai.cc)的网站效果，[github 源码地址](https://github.com/littlematch0123/blog-client)
 
 <iframe style="width: 100%; height: 600px;" src="https://www.xiaohuochai.cc" frameborder="0" width="260" height="600"></iframe>
 
@@ -739,11 +762,11 @@ server{
 
 【定义】
 
-&emsp;&emsp;服务器渲染的Vue应用程序被认为是"同构"或"通用"，因为应用程序的大部分代码都可以在服务器和客户端上运行
+&emsp;&emsp;服务器渲染的 Vue 应用程序被认为是"同构"或"通用"，因为应用程序的大部分代码都可以在服务器和客户端上运行
 
 【优点】
 
-&emsp;&emsp;与传统SPA相比，服务器端渲染(SSR)的优势主要在于：
+&emsp;&emsp;与传统 SPA 相比，服务器端渲染(SSR)的优势主要在于：
 
 &emsp;&emsp;1、更好的 SEO，搜索引擎爬虫抓取工具可以直接查看完全渲染的页面
 
@@ -753,35 +776,31 @@ server{
 
 &emsp;&emsp;无需等待所有的 JavaScript 都完成下载并执行，才显示服务器渲染的标记，所以用户将会更快速地看到完整渲染的页面，通常可以产生更好的用户体验
 
- 
-
 &nbsp;
 
 ### 思路
 
-&emsp;&emsp;下面以官方的SSR服务器端渲染流程图为例，进行概要说明
+&emsp;&emsp;下面以官方的 SSR 服务器端渲染流程图为例，进行概要说明
 
 ![ssr](https://pic.xiaohuochai.site/blogssr1.png)
 
-&emsp;&emsp;1、universal Application Code是服务器端和浏览器端通用的代码
+&emsp;&emsp;1、universal Application Code 是服务器端和浏览器端通用的代码
 
-&emsp;&emsp;2、app.js是应用程序的入口entry，对应vue cli生成的项目的main.js文件
+&emsp;&emsp;2、app.js 是应用程序的入口 entry，对应 vue cli 生成的项目的 main.js 文件
 
-&emsp;&emsp;3、entry-client.js是客户端入口，仅运行于浏览器，entry-server.js是服务器端入口，仅运行于服务器
+&emsp;&emsp;3、entry-client.js 是客户端入口，仅运行于浏览器，entry-server.js 是服务器端入口，仅运行于服务器
 
-&emsp;&emsp;4、entry-client和entry-server这两个文件都需要通过webpack构建，其中entry-client需要通过webpack.server.config.js文件打包，entry-server需要通过webpack.server.config.js文件打包
+&emsp;&emsp;4、entry-client 和 entry-server 这两个文件都需要通过 webpack 构建，其中 entry-client 需要通过 webpack.server.config.js 文件打包，entry-server 需要通过 webpack.server.config.js 文件打包
 
-&emsp;&emsp;5、entry-client构建后的client Bundle打包文件是vue-ssr-client-manifest.json，entry-server构建后的server Bundle打包文件是vue-ssr-server-bundle.json
+&emsp;&emsp;5、entry-client 构建后的 client Bundle 打包文件是 vue-ssr-client-manifest.json，entry-server 构建后的 server Bundle 打包文件是 vue-ssr-server-bundle.json
 
-&emsp;&emsp;6、server.js文件将客户端打包文件vue-ssr-client-manifest.json、服务器端打包文件vue-ssr-server-bundle.json和HTML模板混合，渲染成HTML
-
- 
+&emsp;&emsp;6、server.js 文件将客户端打包文件 vue-ssr-client-manifest.json、服务器端打包文件 vue-ssr-server-bundle.json 和 HTML 模板混合，渲染成 HTML
 
 &nbsp;
 
-### webpack配置
+### webpack 配置
 
-&emsp;&emsp;基于vue-cli生成的项目的build目录结构如下
+&emsp;&emsp;基于 vue-cli 生成的项目的 build 目录结构如下
 
 ```
 build
@@ -793,16 +812,19 @@ build
     - webpack.dev.conf.js
     - webpack.prod.conf.js
 ```
-&emsp;&emsp;前面3个文件无需修改，只需修改*.*.conf.js文件
 
-&emsp;&emsp;1、修改vue-loader.conf.js，将extract的值设置为false，因为服务器端渲染会自动将CSS内置。如果使用该extract，则会引入link标签载入CSS，从而导致相同的CSS资源重复加载
+&emsp;&emsp;前面 3 个文件无需修改，只需修改*.*.conf.js 文件
+
+&emsp;&emsp;1、修改 vue-loader.conf.js，将 extract 的值设置为 false，因为服务器端渲染会自动将 CSS 内置。如果使用该 extract，则会引入 link 标签载入 CSS，从而导致相同的 CSS 资源重复加载
+
 ```
 -    extract: isProduction
 +    extract: false
 ```
-&emsp;&emsp;2、修改webpack.base.conf.js
 
-&emsp;&emsp;只需修改entry入门配置即可
+&emsp;&emsp;2、修改 webpack.base.conf.js
+
+&emsp;&emsp;只需修改 entry 入门配置即可
 
 ```
 ...
@@ -814,9 +836,10 @@ module.exports = {
   },
 ...
 ```
-&emsp;&emsp;3、修改webpack.prod.conf.js
 
-&emsp;&emsp;包括应用vue-server-renderer、去除HtmlWebpackPlugin、增加client环境变量
+&emsp;&emsp;3、修改 webpack.prod.conf.js
+
+&emsp;&emsp;包括应用 vue-server-renderer、去除 HtmlWebpackPlugin、增加 client 环境变量
 
 ```
 'use strict'
@@ -861,7 +884,8 @@ const webpackConfig = merge(baseWebpackConfig, {
 ...
 module.exports = webpackConfig
 ```
-&emsp;&emsp;4、新增webpack.server.conf.js
+
+&emsp;&emsp;4、新增 webpack.server.conf.js
 
 ```
 const webpack = require('webpack')
@@ -889,15 +913,14 @@ module.exports = merge(baseConfig, {
   ]
 })
 ```
- 
 
 &nbsp;
 
 ### 入口配置
 
-&emsp;&emsp;在浏览器端渲染中，入口文件是main.js，而到了服务器端渲染，除了基础的main.js，还需要配置entry-client.js和entry-server.js
+&emsp;&emsp;在浏览器端渲染中，入口文件是 main.js，而到了服务器端渲染，除了基础的 main.js，还需要配置 entry-client.js 和 entry-server.js
 
-&emsp;&emsp;1、修改main.js
+&emsp;&emsp;1、修改 main.js
 
 ```
 import Vue from 'vue'
@@ -925,9 +948,10 @@ Vue.use(async)
 +　return { app, router, store }
 +}
 ```
-&emsp;&emsp;2、新增entry-client.js
 
-&emsp;&emsp;后面会介绍到asyncData方法，但是asyncData方法只能用于路由绑定的组件，如果是初始数据则可以直接在entry-client.js中获取
+&emsp;&emsp;2、新增 entry-client.js
+
+&emsp;&emsp;后面会介绍到 asyncData 方法，但是 asyncData 方法只能用于路由绑定的组件，如果是初始数据则可以直接在 entry-client.js 中获取
 
 ```
 /* eslint-disable */
@@ -997,7 +1021,8 @@ router.onReady(() => {
   app.$mount('#root')
 })
 ```
-&emsp;&emsp;3、新增entry-sever.js
+
+&emsp;&emsp;3、新增 entry-sever.js
 
 ```
 /* eslint-disable */
@@ -1025,7 +1050,6 @@ export default context => new Promise((resolve, reject) => {
   }, reject)
 })
 ```
- 
 
 &nbsp;
 
@@ -1033,7 +1057,7 @@ export default context => new Promise((resolve, reject) => {
 
 &emsp;&emsp;由于代码需要在服务器端和浏览器端共用，所以需要修改组件，使之在服务器端运行时不会报错
 
-&emsp;&emsp;1、修改router路由文件，给每个请求一个新的路由router实例
+&emsp;&emsp;1、修改 router 路由文件，给每个请求一个新的路由 router 实例
 
 ```
 import Vue from 'vue'
@@ -1056,7 +1080,8 @@ Vue.use(Router)
 &emsp;&emsp;})
 +}
 ```
-&emsp;&emsp;2、修改状态管理vuex文件，给每个请求一个新的vuex实例
+
+&emsp;&emsp;2、修改状态管理 vuex 文件，给每个请求一个新的 vuex 实例
 
 ```
 import Vue from 'vue'
@@ -1075,11 +1100,12 @@ Vue.use(Vuex)
 &emsp;&emsp;})
 +}
 ```
-&emsp;&emsp;3、使用asyncData方法来获取异步数据
 
-&emsp;&emsp;要特别注意的是，由于asyncData只能通过路由发生作用，使用是非路由组件的异步数据获取最好移动到路由组件中
+&emsp;&emsp;3、使用 asyncData 方法来获取异步数据
 
-&emsp;&emsp;如果要通过asyncData获取多个数据，可以使用Promise.all()方法
+&emsp;&emsp;要特别注意的是，由于 asyncData 只能通过路由发生作用，使用是非路由组件的异步数据获取最好移动到路由组件中
+
+&emsp;&emsp;如果要通过 asyncData 获取多个数据，可以使用 Promise.all()方法
 
 ```
 asyncData({ store }) {
@@ -1090,9 +1116,10 @@ asyncData({ store }) {
     ])
 }
 ```
-&emsp;&emsp;如果该异步数据是全局通用的，可以在entry-client.js方法中直接获取
 
-&emsp;&emsp;将TheHeader.vue通用头部组件获取异步数据的代码移动到entry-client.js方法中进行获取
+&emsp;&emsp;如果该异步数据是全局通用的，可以在 entry-client.js 方法中直接获取
+
+&emsp;&emsp;将 TheHeader.vue 通用头部组件获取异步数据的代码移动到 entry-client.js 方法中进行获取
 
 ```
 // TheHeader.vue
@@ -1128,7 +1155,8 @@ asyncData({ store }) {
 -      !userCount && dispatch(LOAD_USERS_ASYNC)
 -    },
 ```
-&emsp;&emsp;将Post.vue中的异步数据通过asyncData进行获取
+
+&emsp;&emsp;将 Post.vue 中的异步数据通过 asyncData 进行获取
 
 ```
 // post.vue
@@ -1143,7 +1171,8 @@ export default {
 -  },
 ...
 ```
-&emsp;&emsp;4、将全局css从main.js移动到App.vue的内联style样式中，因为main.js中未设置css文件解析
+
+&emsp;&emsp;4、将全局 css 从 main.js 移动到 App.vue 的内联 style 样式中，因为 main.js 中未设置 css 文件解析
 
 ```
 // main.js
@@ -1154,10 +1183,12 @@ export default {
 ...
 </style>
 ```
-&emsp;&emsp;5、由于post组件的模块module.js中需要对数据通过window.atob()方法进行base64解析，而nodeJS环境下无window对象，会报错。于是，代码修改如下
+
+&emsp;&emsp;5、由于 post 组件的模块 module.js 中需要对数据通过 window.atob()方法进行 base64 解析，而 nodeJS 环境下无 window 对象，会报错。于是，代码修改如下
+
 ```
 // components/Post/module
-- text: decodeURIComponent(escape(window.atob(doc.content))) 
+- text: decodeURIComponent(escape(window.atob(doc.content)))
 + text: typeof window === 'object' ? decodeURIComponent(escape(window.atob(doc.content))) : ''
 ```
 
@@ -1165,11 +1196,11 @@ export default {
 
 ### 服务器配置
 
-&emsp;&emsp;1、在根目录下，新建server.js文件
+&emsp;&emsp;1、在根目录下，新建 server.js 文件
 
-&emsp;&emsp;由于在webpack中去掉了HTMLWebpackPlugin插件，而是通过nodejs来处理模板，同时也就缺少了该插件设置的HTML文件压缩功能
+&emsp;&emsp;由于在 webpack 中去掉了 HTMLWebpackPlugin 插件，而是通过 nodejs 来处理模板，同时也就缺少了该插件设置的 HTML 文件压缩功能
 
-&emsp;&emsp;需要在server.js文件中安装html-minifier来实现HTML文件压缩
+&emsp;&emsp;需要在 server.js 文件中安装 html-minifier 来实现 HTML 文件压缩
 
 ```
 const express = require('express')
@@ -1202,7 +1233,7 @@ app.get('*', (req, res) => {
   }
 
   const context = {
-    title: '小火柴的前端小站',
+    title: '的前端小站',
     url: req.url
   }
   renderer.renderToString(context, (err, html) => {
@@ -1219,14 +1250,17 @@ app.listen(8080, () => {
   console.log(`vue ssr started at localhost: 8080`)
 })
 ```
-&emsp;&emsp;2、修改package.json文件
+
+&emsp;&emsp;2、修改 package.json 文件
+
 ```
 -     "build": "node build/build.js",
 +    "build:client": "node build/build.js",
 +    "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.conf.js --progress --hide-modules",
 +    "build": "rimraf dist && npm run build:client && npm run build:server"
 ```
-&emsp;&emsp;3、修改index.html文件
+
+&emsp;&emsp;3、修改 index.html 文件
 
 ```
 <!DOCTYPE html>
@@ -1235,20 +1269,24 @@ app.listen(8080, () => {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <link rel="shortcut icon" href="/static/favicon.ico">
-    <title>小火柴的蓝色理想</title>
+    <title>的蓝色理想</title>
   </head>
   <body>
      <!--vue-ssr-outlet-->
   </body>
 </html>
 ```
+
 &emsp;&emsp;4、取消代理
 
-&emsp;&emsp;如果继续使用代理如/api代理到后端接口，则可能会报如下错误
+&emsp;&emsp;如果继续使用代理如/api 代理到后端接口，则可能会报如下错误
+
 ```
 error：connect ECONNREFUSED 127.0.0.1：80
 ```
-&emsp;&emsp;直接写带有http的后端接口地址即可
+
+&emsp;&emsp;直接写带有 http 的后端接口地址即可
+
 ```
 const API_HOSTNAME = 'http://192.168.1.103:4000'
 ```
@@ -1258,21 +1296,26 @@ const API_HOSTNAME = 'http://192.168.1.103:4000'
 ### 测试
 
 &emsp;&emsp;1、安装依赖包
+
 ```
 cnpm install --save-dev vue-server-renderer
 ```
+
 &emsp;&emsp;2、构建
+
 ```
 npm run build
 ```
+
 &emsp;&emsp;3、运行
+
 ```
 node server.js
 ```
+
 &emsp;&emsp;点击右键，查看网页源代码。结果如下，说明网站已经实现了服务器端渲染
 
 ![ssr](https://pic.xiaohuochai.site/blog/blogssr2.png)
- 
 
 &nbsp;
 
@@ -1280,9 +1323,9 @@ node server.js
 
 【pm2】
 
-&emsp;&emsp;由于该网站需要守护nodejs程序，使用pm2部署较为合适
+&emsp;&emsp;由于该网站需要守护 nodejs 程序，使用 pm2 部署较为合适
 
-&emsp;&emsp;在项目根目录下，新建一个ecosystem.json文件，内容如下
+&emsp;&emsp;在项目根目录下，新建一个 ecosystem.json 文件，内容如下
 
 ```
 {
@@ -1313,11 +1356,12 @@ node server.js
   }
 }
 ```
+
 【CDN】
 
-&emsp;&emsp;由于项目实际上既有静态资源，也有nodeJS程序。因此，最好把静态资源上传到七牛CDN上
+&emsp;&emsp;由于项目实际上既有静态资源，也有 nodeJS 程序。因此，最好把静态资源上传到七牛 CDN 上
 
-&emsp;&emsp;自行选择服务器的一个目录，新建upload.js文件
+&emsp;&emsp;自行选择服务器的一个目录，新建 upload.js 文件
 
 ```
 var fs = require('fs');
@@ -1352,7 +1396,7 @@ function uploadFile (localFile) {
   } else {
     console.log(respInfo.statusCode);
     console.log(respBody);
-  }  
+  }
 })
 }
 // 目录上传方法
@@ -1381,17 +1425,23 @@ fs.exists(staticPath, function (exists) {
   }
 })
 ```
+
 【post-deploy】
 
-&emsp;&emsp;然后，修改ecosystem.json文件中的post-deploy项
+&emsp;&emsp;然后，修改 ecosystem.json 文件中的 post-deploy 项
+
 ```
 "source ~/.nvm/nvm.sh && cnpm install && npm run build && node /home/xiaohuochai/blog/client/upload.js&& pm2 startOrRestart ecosystem.json --env production"
 ```
-&emsp;&emsp;但是，经过实际测试，在服务器端进行构建build，极其容易造成服务器死机。于是，还是在本地构建完成后，上传dist文件到服务器再进行相关操作
+
+&emsp;&emsp;但是，经过实际测试，在服务器端进行构建 build，极其容易造成服务器死机。于是，还是在本地构建完成后，上传 dist 文件到服务器再进行相关操作
+
 ```
 "source ~/.nvm/nvm.sh && cnpm install && node /home/xiaohuochai/blog/client/upload.js&& pm2 startOrRestart ecosystem.json --env production"
 ```
-&emsp;&emsp;修改项目的静态资源地址为CDN地址，API地址为服务器API地址
+
+&emsp;&emsp;修改项目的静态资源地址为 CDN 地址，API 地址为服务器 API 地址
+
 ```
 // config/index.js
 assetsPublicPath: 'https://static.xiaohuochai.site/client/'
@@ -1399,9 +1449,10 @@ assetsPublicPath: 'https://static.xiaohuochai.site/client/'
 // src/constants/API.js
 const API_HOSTNAME = 'https://api.xiaohuochai.cc'
 ```
+
 【nginx】
 
-&emsp;&emsp;如果要使用域名对项目进行访问，还需要进行nginx配置
+&emsp;&emsp;如果要使用域名对项目进行访问，还需要进行 nginx 配置
 
 ```
 upstream client {
@@ -1436,20 +1487,20 @@ server{
                 proxy_redirect off;
 
     }
-} 
+}
 ```
 
 &nbsp;
 
 ### 浏览器渲染
 
-&emsp;&emsp;官网的代码中，如果使用开发环境development，则需要进行相当复杂的配置
+&emsp;&emsp;官网的代码中，如果使用开发环境 development，则需要进行相当复杂的配置
 
-&emsp;&emsp;能否应用当前的webpack.dev.conf.js来进行开发呢？完全可以，开发环境中使用浏览器端渲染，生产环境中使用服务器端渲染
+&emsp;&emsp;能否应用当前的 webpack.dev.conf.js 来进行开发呢？完全可以，开发环境中使用浏览器端渲染，生产环境中使用服务器端渲染
 
 &emsp;&emsp;需要做出如下三点更改：
 
-&emsp;&emsp;1、更改API地址，开发环境使用webpack代理，生产环境使用上线地址
+&emsp;&emsp;1、更改 API 地址，开发环境使用 webpack 代理，生产环境使用上线地址
 
 ```
 // src/constants/API
@@ -1460,7 +1511,8 @@ if (process.env.NODE_ENV === 'production') {
   API_HOSTNAME = '/api'
 }
 ```
-&emsp;&emsp;2、在index.html同级目录下，新建一个index.template.html文件，index.html是开发环境的模板文件，index.template.html是生产环境的模板文件
+
+&emsp;&emsp;2、在 index.html 同级目录下，新建一个 index.template.html 文件，index.html 是开发环境的模板文件，index.template.html 是生产环境的模板文件
 
 ```
 // index.html
@@ -1473,7 +1525,8 @@ if (process.env.NODE_ENV === 'production') {
      <!--vue-ssr-outlet-->
   </body>
 ```
-&emsp;&emsp;3、更改服务器端入口文件server.js的模板文件为index.template.html
+
+&emsp;&emsp;3、更改服务器端入口文件 server.js 的模板文件为 index.template.html
 
 ```
 // server.js
@@ -1484,4 +1537,5 @@ const renderer = createBundleRenderer(require('./dist/vue-ssr-server-bundle.json
   basedir: resolve('./dist')
 })
 ```
+
 &emsp;&emsp;经过简单的更改，即可实现开发环境使用浏览器端渲染，生产环境使用服务器端渲染的效果

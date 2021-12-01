@@ -1,6 +1,6 @@
-# CSS文本效果
+# CSS 文本效果
 
-&emsp;&emsp;本文将详细介绍CSS文本效果
+&emsp;&emsp;本文将详细介绍 CSS 文本效果
 
 &nbsp;
 
@@ -76,7 +76,7 @@ div:hover{
 
 ### 凸起效果
 
-&emsp;&emsp;文字凸起(伪3D)效果的主要思路就是使用一长串累加的投影，不设模糊并以1px的跨度逐渐错开，使颜色逐渐变暗，然后在底部加一层强烈模糊的暗投影，从而模拟完整的立体效果
+&emsp;&emsp;文字凸起(伪 3D)效果的主要思路就是使用一长串累加的投影，不设模糊并以 1px 的跨度逐渐错开，使颜色逐渐变暗，然后在底部加一层强烈模糊的暗投影，从而模拟完整的立体效果
 
 <div>
 <pre>  background:#58a;
@@ -105,7 +105,7 @@ div{
 
 &emsp;&emsp;有些时候，希望一段文本中的字符逐个显现，模拟出一种打字的效果。这个效果在技术类网站中尤为流行，用等宽字体可以营造出一种终端命令行的感觉
 
-&emsp;&emsp;核心思路就是让容器的宽度成为动画的主体把所有文本包裹在这个容器中，然后让它的宽度从0开始以步进动画的方式、一个字一个字地扩张到它应有的宽度
+&emsp;&emsp;核心思路就是让容器的宽度成为动画的主体把所有文本包裹在这个容器中，然后让它的宽度从 0 开始以步进动画的方式、一个字一个字地扩张到它应有的宽度
 
 &emsp;&emsp;这个方法是局限的，它并不适用于多行文本
 
@@ -129,7 +129,7 @@ div{
 
 【SVG】
 
-&emsp;&emsp;使用SVG来实现环形文字较为简单
+&emsp;&emsp;使用 SVG 来实现环形文字较为简单
 
 <div>
 <pre>&lt;style&gt;
@@ -140,7 +140,7 @@ svg{margin-left: -20px;}
   &lt;svg height="100" version="1.1" xmlns="http://www.w3.org/2000/svg" &gt;
     &lt;path id="my_path"  d="M 50 50 a 20 20, 0, 1, 1, 0 1 Z" fill="none"/&gt;
     &lt;text&gt;
-      &lt;textPath xlink:href="#my_path"&gt;小火柴的蓝色理想&lt;/textPath&gt;
+      &lt;textPath xlink:href="#my_path"&gt;的蓝色理想&lt;/textPath&gt;
     &lt;/text&gt;
   &lt;/svg&gt;
 &lt;/div&gt;</pre>
@@ -154,7 +154,7 @@ svg{margin-left: -20px;}
 
 &emsp;&emsp;模糊滤镜叠加对比度滤镜可以产生融合效果
 
-&emsp;&emsp;注意：文字融合的思路来自[chokcoco](https://home.cnblogs.com/u/coco1s/)的博文[CSS滤镜技巧与细节](http://www.cnblogs.com/coco1s/p/7519460.html)
+&emsp;&emsp;注意：文字融合的思路来自[chokcoco](https://home.cnblogs.com/u/coco1s/)的博文[CSS 滤镜技巧与细节](http://www.cnblogs.com/coco1s/p/7519460.html)
 
 &emsp;&emsp;1、[模糊滤镜](http://www.cnblogs.com/xiaohuochai/p/6270939.html#anchor10)`filter: blur()`： 给图像设置高斯模糊效果
 
@@ -197,7 +197,7 @@ svg{margin-left: -20px;}
 
 【文字显隐效果】
 
-&emsp;&emsp;首先，利用blur()和contrast()实现一个文字显隐效果
+&emsp;&emsp;首先，利用 blur()和 contrast()实现一个文字显隐效果
 
 <div>
 <pre>&lt;style&gt;
@@ -207,7 +207,7 @@ svg{margin-left: -20px;}
 .box:hover .text{filter:blur(3px);}
 &lt;/style&gt;
 &lt;div class="box"&gt;
-    &lt;span class="text"&gt;小火柴的蓝色理想&lt;/span&gt;
+    &lt;span class="text"&gt;的蓝色理想&lt;/span&gt;
 &lt;/div&gt;</pre>
 </div>
 
@@ -217,7 +217,7 @@ svg{margin-left: -20px;}
 
 【文字融合】
 
-&emsp;&emsp;下面来配合[字符间距letter-spacing](http://www.cnblogs.com/xiaohuochai/p/5325063.html#anchor4)来实现文字融合效果
+&emsp;&emsp;下面来配合[字符间距 letter-spacing](http://www.cnblogs.com/xiaohuochai/p/5325063.html#anchor4)来实现文字融合效果
 
 <div>
 <pre>&lt;style&gt;
@@ -227,11 +227,10 @@ svg{margin-left: -20px;}
 .box:hover .text{filter:blur(3px);letter-spacing: -1em}
 &lt;/style&gt;
 &lt;div class="box"&gt;
-    &lt;span class="text"&gt;小火柴的蓝色理想&lt;/span&gt;
+    &lt;span class="text"&gt;的蓝色理想&lt;/span&gt;
 &lt;/div&gt;</pre>
 </div>
 
 &emsp;&emsp;鼠标移入后，文字融合；移出后，文字恢复
 
 <iframe style="width: 100%; height: 60px;" src="https://demo.xiaohuochai.site/css/word/w13.html" frameborder="0" width="320" height="240"></iframe>
-

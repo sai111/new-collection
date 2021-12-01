@@ -1,18 +1,18 @@
-# 深入理解ajax系列第二篇——请求方式
+# 深入理解 ajax 系列第二篇——请求方式
 
-&emsp;&emsp;在[上一篇](http://www.cnblogs.com/xiaohuochai/p/6036475.html)中，概要地介绍了XHR对象的使用。本文将详细介绍使用XHR对象发送请求的两种方式&mdash;&mdash;GET和POST。下面将以实例的形式来详细说明
+&emsp;&emsp;在[上一篇](http://www.cnblogs.com/xiaohuochai/p/6036475.html)中，概要地介绍了 XHR 对象的使用。本文将详细介绍使用 XHR 对象发送请求的两种方式&mdash;&mdash;GET 和 POST。下面将以实例的形式来详细说明
 
 &nbsp;
 
 ### GET
 
-&emsp;&emsp;GET是最常见的请求类型，最常用于向服务器查询某些信息，它适用于当URL完全指定请求资源，当请求对服务器没有任何副作用以及当服务器的响应是可缓存的情况下
+&emsp;&emsp;GET 是最常见的请求类型，最常用于向服务器查询某些信息，它适用于当 URL 完全指定请求资源，当请求对服务器没有任何副作用以及当服务器的响应是可缓存的情况下
 
 【数据发送】
 
-&emsp;&emsp;使用GET方式发送请求时，数据被追加到open()方法中URL的末尾
+&emsp;&emsp;使用 GET 方式发送请求时，数据被追加到 open()方法中 URL 的末尾
 
-&emsp;&emsp;数据以问号开始，名和值之间用等号链接，名值对之间用和号(&amp;)分隔。使用GET方式发送的数据常常被称为查询字符串
+&emsp;&emsp;数据以问号开始，名和值之间用等号链接，名值对之间用和号(&amp;)分隔。使用 GET 方式发送的数据常常被称为查询字符串
 
 <div>
 <pre>xhr.open("get","example.php?name1=value1&amp;name2=value2",true)</pre>
@@ -20,16 +20,16 @@
 
 【编码】
 
-&emsp;&emsp;由于URL无法识别特殊字符，所以如果数据中包含特殊字符(如中文)，则需要使用encodeURIComponent()进行编码
+&emsp;&emsp;由于 URL 无法识别特殊字符，所以如果数据中包含特殊字符(如中文)，则需要使用 encodeURIComponent()进行编码
 
-&emsp;&emsp;注意：encodeURIComponent()只是6种编解码方法的一种，关于它们的详细信息[移步至此](http://www.cnblogs.com/xiaohuochai/p/6144157.html#anchor4)
+&emsp;&emsp;注意：encodeURIComponent()只是 6 种编解码方法的一种，关于它们的详细信息[移步至此](http://www.cnblogs.com/xiaohuochai/p/6144157.html#anchor4)
 
 <div>
-<pre>var url = 'test.php' +'?name='  + encodeURIComponent("小火柴");
+<pre>var url = 'test.php' +'?name='  + encodeURIComponent("");
 xhr.open('get',url,true);</pre>
 </div>
 
-&emsp;&emsp;上面的URL被编码为
+&emsp;&emsp;上面的 URL 被编码为
 
 <div>
 <pre>test.php?name=%E5%B0%8F%E7%81%AB%E6%9F%B4</pre>
@@ -37,7 +37,7 @@ xhr.open('get',url,true);</pre>
 
 【编码函数】
 
-&emsp;&emsp;下面这个函数可以辅助向现有URL的末尾添加查询字符串参数
+&emsp;&emsp;下面这个函数可以辅助向现有 URL 的末尾添加查询字符串参数
 
 <div>
 <pre>function addURLParam(url,name,value){
@@ -47,7 +47,7 @@ xhr.open('get',url,true);</pre>
 }</pre>
 </div>
 
-&emsp;&emsp;这个addURLParam()函数接受三个参数：要添加参数的URL、参数的名称和参数的值。这个函数首先检查URL是否包含问号(以确定是否已经有参数存在)。如果没有，就添加一个问号；否则，就添加一个和号。然后，将参数名称和值进行编码，再添加到URL的末尾。最后返回添加参数之后的URL
+&emsp;&emsp;这个 addURLParam()函数接受三个参数：要添加参数的 URL、参数的名称和参数的值。这个函数首先检查 URL 是否包含问号(以确定是否已经有参数存在)。如果没有，就添加一个问号；否则，就添加一个和号。然后，将参数名称和值进行编码，再添加到 URL 的末尾。最后返回添加参数之后的 URL
 
 <div>
 <pre>var url = 'test.php';
@@ -55,11 +55,12 @@ url = addURLParam(url,'name','aaa');
 url = addURLParam(url,'data','bbb');
 
 xhr.open('get',url,true);</pre>
+
 </div>
 
 【缓存】
 
-&emsp;&emsp;在GET请求中，为了避免缓存的影响，可以向URL添加一个随机数或时间戳
+&emsp;&emsp;在 GET 请求中，为了避免缓存的影响，可以向 URL 添加一个随机数或时间戳
 
 <div>
 <pre>xhr.open('get',url+'&amp;'+Number(new Date()),true);
@@ -68,7 +69,7 @@ xhr.open('get',url+'&amp;'+Math.random(),true);</pre>
 
 【封装函数】
 
-&emsp;&emsp;下面把使用get方式发送ajax请求的操作封装为get()函数
+&emsp;&emsp;下面把使用 get 方式发送 ajax 请求的操作封装为 get()函数
 
 <div>
 <pre>function get(url,data,callback){
@@ -126,9 +127,9 @@ foreach($_GET as $key =&gt; $value){
 
 ### POST
 
-&emsp;&emsp;使用频率仅次于GET的是POST请求，通常用于服务器发送应该被保存的数据。"POST"方法常用于HTML表单。它在请求主体中包含额外数据且这些数据常存储到服务器上的数据库中。相同URL的重复POST请求从服务器得到的响应可能不同，同时不应该缓存使用这个方法的请求
+&emsp;&emsp;使用频率仅次于 GET 的是 POST 请求，通常用于服务器发送应该被保存的数据。"POST"方法常用于 HTML 表单。它在请求主体中包含额外数据且这些数据常存储到服务器上的数据库中。相同 URL 的重复 POST 请求从服务器得到的响应可能不同，同时不应该缓存使用这个方法的请求
 
-&emsp;&emsp;POST请求应该把数据作为请求的主体提交，而GET请求传统上不是这样。POST请求的主体可以包含非常多的数据，而且格式不限。在open()方法第一个参数的位置传入"post"，就可以初始化一个POST请求
+&emsp;&emsp;POST 请求应该把数据作为请求的主体提交，而 GET 请求传统上不是这样。POST 请求的主体可以包含非常多的数据，而且格式不限。在 open()方法第一个参数的位置传入"post"，就可以初始化一个 POST 请求
 
 <div>
 <pre>xhr.open("post","example.php",true);</pre>
@@ -136,23 +137,23 @@ foreach($_GET as $key =&gt; $value){
 
 【设置请求头】
 
-&emsp;&emsp;发送POST请求的第二步就是向send()方法中传入某些数据。由于XHR最初的设计主要是为了处理XML，因此可以在此传入XML DOM文档，传入的文档经序列化之后将作为请求主体被提交到服务器。当然，也可以在此传入任何想发送到服务器的字符串
+&emsp;&emsp;发送 POST 请求的第二步就是向 send()方法中传入某些数据。由于 XHR 最初的设计主要是为了处理 XML，因此可以在此传入 XML DOM 文档，传入的文档经序列化之后将作为请求主体被提交到服务器。当然，也可以在此传入任何想发送到服务器的字符串
 
-&emsp;&emsp;默认情况下，服务器对POST请求和提交Web表单的请求并不会一视同仁。因此，服务器端必须有程序来读取发送过来的原始数据，并从中解析出有用的部分。不过，可以使用XHR来模仿表单提交：首先将Content-Type头部信息设置为application/x-www-form-urlencoded，也就是表单提交时的内容类型
+&emsp;&emsp;默认情况下，服务器对 POST 请求和提交 Web 表单的请求并不会一视同仁。因此，服务器端必须有程序来读取发送过来的原始数据，并从中解析出有用的部分。不过，可以使用 XHR 来模仿表单提交：首先将 Content-Type 头部信息设置为 application/x-www-form-urlencoded，也就是表单提交时的内容类型
 
 <div>
 <pre>xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");</pre>
 </div>
 
-&emsp;&emsp;如果不设置Content-Type，发送给服务器的数据就不会出现在$_POSR超级全局变量中。这时要访问同样的数据，须借助$HTTP_RAW_POST_DATA
+&emsp;&emsp;如果不设置 Content-Type，发送给服务器的数据就不会出现在$_POSR超级全局变量中。这时要访问同样的数据，须借助$HTTP_RAW_POST_DATA
 
-&emsp;&emsp;如果对相同的头调用多次setReQuestHeader()，新值不会取代之前指定的值。相反，HTTP请求将包含这个头的多个副本或这个头将指定多个值
+&emsp;&emsp;如果对相同的头调用多次 setReQuestHeader()，新值不会取代之前指定的值。相反，HTTP 请求将包含这个头的多个副本或这个头将指定多个值
 
 【发送主体】
 
-&emsp;&emsp;接下来要以适当的格式创建一个字符串，并使用send()方法发送
+&emsp;&emsp;接下来要以适当的格式创建一个字符串，并使用 send()方法发送
 
-&emsp;&emsp;POST数据的格式与查询字符串格式相同，名和值之间用等号链接，名值对之间用和号(&amp;)分隔，如下所示
+&emsp;&emsp;POST 数据的格式与查询字符串格式相同，名和值之间用等号链接，名值对之间用和号(&amp;)分隔，如下所示
 
 <div>
 <pre>xhr.send('name="abc"&amp;num=123');</pre>
@@ -160,17 +161,17 @@ foreach($_GET as $key =&gt; $value){
 
 【编码和缓存】
 
-&emsp;&emsp;由于使用POST方式传递数据时，需要设置请求头"content-type"，这一步骤已经能够自动对特殊字符(如中文)进行编码，所以就不再需要使用encodeURIComponent()方法了
+&emsp;&emsp;由于使用 POST 方式传递数据时，需要设置请求头"content-type"，这一步骤已经能够自动对特殊字符(如中文)进行编码，所以就不再需要使用 encodeURIComponent()方法了
 
-&emsp;&emsp;POST请求主要用于数据提交，相同URL的重复POST请求从服务器得到的响应可能不同，所以不应该缓存使用POST方法的请求
+&emsp;&emsp;POST 请求主要用于数据提交，相同 URL 的重复 POST 请求从服务器得到的响应可能不同，所以不应该缓存使用 POST 方法的请求
 
 【性能】
 
-&emsp;&emsp;GET对所发送信息的数量有限制，一般在2000个字符。与GET请求相比，POST请求消耗的资源会更多一些。从性能角度来看，以发送相同的数据计，GET请求的速度最多可POST请求的两倍
+&emsp;&emsp;GET 对所发送信息的数量有限制，一般在 2000 个字符。与 GET 请求相比，POST 请求消耗的资源会更多一些。从性能角度来看，以发送相同的数据计，GET 请求的速度最多可 POST 请求的两倍
 
 【封装函数】
 
-&emsp;&emsp;下面把使用post方式发送ajax请求的操作封装为post()函数
+&emsp;&emsp;下面把使用 post 方式发送 ajax 请求的操作封装为 post()函数
 
 <div>
 <pre>function post(url,data,callback){
@@ -230,7 +231,7 @@ foreach($_POST as $key =&gt; $value){
 
 ### 函数封装
 
-&emsp;&emsp;在get和post这两个段落中，分别对get和post这两种方式进行了函数封装。下面对它们进行整合，封装为一个可选择请求方式的ajax()函数，并储存为[ajax.js](http://files.cnblogs.com/files/xiaohuochai/ajax.js)文件
+&emsp;&emsp;在 get 和 post 这两个段落中，分别对 get 和 post 这两种方式进行了函数封装。下面对它们进行整合，封装为一个可选择请求方式的 ajax()函数，并储存为[ajax.js](http://files.cnblogs.com/files/xiaohuochai/ajax.js)文件
 
 <div>
 <pre>function ajax(obj){
@@ -318,7 +319,7 @@ echo '你选择的日期是' .$_GET['year'] .'年' .$_GET['month'] .'月'.$_GET[
 
 ### 实例
 
-&emsp;&emsp;下面以一个实例来说明GET和POST两种请求方式的应用
+&emsp;&emsp;下面以一个实例来说明 GET 和 POST 两种请求方式的应用
 
 <div>
 <pre>&lt;!-- 前端页面 --&gt;
@@ -530,4 +531,3 @@ function create(){
 </div>
 
 <iframe src="https://xiaohuochai.site/test/requestedMode/r2.html" frameborder="0" width="500" height="550"></iframe>
-

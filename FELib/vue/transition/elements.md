@@ -1,6 +1,6 @@
-# Vue多元素过渡
+# Vue 多元素过渡
 
-&emsp;&emsp;前面分别介绍了单元素过渡的[CSS过渡](http://www.cnblogs.com/xiaohuochai/p/7383979.html)和[JS过渡](http://www.cnblogs.com/xiaohuochai/p/7398088.html)，本文将详细介绍Vue多元素过渡
+&emsp;&emsp;前面分别介绍了单元素过渡的[CSS 过渡](http://www.cnblogs.com/xiaohuochai/p/7383979.html)和[JS 过渡](http://www.cnblogs.com/xiaohuochai/p/7398088.html)，本文将详细介绍 Vue 多元素过渡
 
 &nbsp;
 
@@ -18,6 +18,7 @@
 </div>
 
 &emsp;&emsp;下面是一个例子
+
 <!-- {% raw %} -->
 <div>
 <pre>&lt;style&gt;
@@ -75,8 +76,8 @@ new Vue({
 <pre>&lt;div id="demo"&gt;
   &lt;button @click="show = !show"&gt;toggle&lt;/button&gt;   
   &lt;transition name="fade"&gt;
-    &lt;p v-if="show"&gt;我是小火柴&lt;/p&gt;
-    &lt;p v-else&gt;我不是小火柴&lt;/p&gt;
+    &lt;p v-if="show"&gt;我是&lt;/p&gt;
+    &lt;p v-else&gt;我不是&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -91,18 +92,18 @@ new Vue({
 &lt;/script&gt;</pre>
 </div>
 
-&emsp;&emsp;由下面的示例可知，两个相同的p元素切换时，无过渡效果
+&emsp;&emsp;由下面的示例可知，两个相同的 p 元素切换时，无过渡效果
 
 <iframe style="width: 100%; height: 100px;" src="https://demo.xiaohuochai.site/vue/transition/t14.html" frameborder="0" width="320" height="240"></iframe>
 
-&emsp;&emsp;因此，对于具有相同标签名的元素切换的情况，需要通过&nbsp;`key`&nbsp;特性设置唯一的值来标记以让 Vue 区分它们　
+&emsp;&emsp;因此，对于具有相同标签名的元素切换的情况，需要通过&nbsp;`key`&nbsp;特性设置唯一的值来标记以让 Vue 区分它们
 
 <div>
 <pre>&lt;div id="demo"&gt;
   &lt;button @click="show = !show"&gt;toggle&lt;/button&gt;   
   &lt;transition name="fade"&gt;
-    &lt;p v-if="show" key="trueMatch"&gt;我是小火柴&lt;/p&gt;
-    &lt;p v-else key="falseMatch"&gt;我不是小火柴&lt;/p&gt;
+    &lt;p v-if="show" key="trueMatch"&gt;我是&lt;/p&gt;
+    &lt;p v-else key="falseMatch"&gt;我不是&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -111,7 +112,7 @@ new Vue({
 
 &nbsp;
 
-### 替代if
+### 替代 if
 
 &emsp;&emsp;在一些场景中，可以给通过给同一个元素的&nbsp;`key`&nbsp;特性设置不同的状态来代替&nbsp;`v-if`&nbsp;和&nbsp;`v-else`
 
@@ -123,6 +124,7 @@ new Vue({
 </div>
 
 &emsp;&emsp;上面的例子可以重写为
+
 <!-- {% raw %} -->
 <div>
 <pre>&lt;transition&gt;
@@ -174,6 +176,7 @@ new Vue({
 </div>
 
 &emsp;&emsp;可以重写为
+
 <!-- {% raw %} -->
 <div>
 <pre>&lt;transition&gt;
@@ -246,6 +249,7 @@ new Vue({
 ### 过渡模式
 
 &emsp;&emsp;先看下面这个例子
+
 <!-- {% raw %} -->
 <div>
 <pre>&lt;style&gt;
@@ -285,7 +289,8 @@ out-in: 当前元素先进行过渡，完成之后新元素过渡进入。</pre>
 
 【in-out】
 
-&emsp;&emsp;下面使用in-out来重写之前的开关按钮过渡
+&emsp;&emsp;下面使用 in-out 来重写之前的开关按钮过渡
+
 <!-- {% raw %} -->
 <div>
 <pre>&lt;div id="demo"&gt;   
@@ -299,7 +304,8 @@ out-in: 当前元素先进行过渡，完成之后新元素过渡进入。</pre>
 
 【out-in】
 
-&emsp;&emsp;下面使用out-in来重写之前的开关按钮过渡
+&emsp;&emsp;下面使用 out-in 来重写之前的开关按钮过渡
+
 <!-- {% raw %} -->
 <div>
 <pre>&lt;div id="demo"&gt;   
@@ -347,7 +353,7 @@ new Vue({
 
 <iframe style="width: 100%; height: 40px;" src="https://demo.xiaohuochai.site/vue/transition/t21.html" frameborder="0" width="320" height="240"></iframe>
 
-&emsp;&emsp;下面是一个使用absolute和translate实现的类似滑动&nbsp;
+&emsp;&emsp;下面是一个使用 absolute 和 translate 实现的类似滑动&nbsp;
 
 <div>
 <pre>&lt;style&gt;
@@ -362,7 +368,7 @@ new Vue({
 
 <iframe style="width: 100%; height: 40px;" src="https://demo.xiaohuochai.site/vue/transition/t22.html" frameborder="0" width="320" height="240"></iframe>
 
-&emsp;&emsp;如果设置in-out模式，将实现更酷的滑动效果
+&emsp;&emsp;如果设置 in-out 模式，将实现更酷的滑动效果
 
 <div>
 <pre>&lt;style&gt;
@@ -445,4 +451,3 @@ new Vue({
 </div>
 
 <iframe style="width: 100%; height: 60px;" src="https://demo.xiaohuochai.site/vue/transition/t24.html" frameborder="0" width="320" height="240"></iframe>
-

@@ -1,14 +1,14 @@
-# audio和video
+# audio 和 video
 
-&emsp;&emsp;HTML5新增了两个与媒体相关的标签，让开发人员不必依赖任何插件就能在网页中嵌入跨浏览器的音频和视频内容，这两个标签是&lt;audio&gt;和&lt;video&gt;，且不被IE8-浏览器支持
+&emsp;&emsp;HTML5 新增了两个与媒体相关的标签，让开发人员不必依赖任何插件就能在网页中嵌入跨浏览器的音频和视频内容，这两个标签是&lt;audio&gt;和&lt;video&gt;，且不被 IE8-浏览器支持
 
 &emsp;&emsp;以视频文件举例，它包含了音频轨道、视频轨道和其他一些元数据(封面、标题、子标题、字幕等)
 
 ![audioAndVideo](https://pic.xiaohuochai.site/blog/HTML_tags_audioAndVideo.jpg)
 
-## HTML元素
+## HTML 元素
 
-&emsp;&emsp;使用这两个元素至少要在标签中包含src属性。位于开始和结束标签之间的任何内容都将作为后备内容，在浏览器不支持这两个媒体元素的情况下显示
+&emsp;&emsp;使用这两个元素至少要在标签中包含 src 属性。位于开始和结束标签之间的任何内容都将作为后备内容，在浏览器不支持这两个媒体元素的情况下显示
 
 ### &lt;audio&gt;
 
@@ -25,7 +25,7 @@ src              要播放的音频的URL        </pre>
 &lt;/audio&gt;    </pre>
 </div>
 
-&emsp;&emsp;注意：&lt;audio&gt;元素不支持播放wma格式的文件
+&emsp;&emsp;注意：&lt;audio&gt;元素不支持播放 wma 格式的文件
 
 &emsp;&emsp;&lt;演示框&gt;点击下列相应属性值可进行演示
 
@@ -74,7 +74,7 @@ type      规定媒体资源的MIME类型</pre>
 
 &emsp;&emsp;&emsp;音频 [1]audio/ogg [2]audio/mpeg
 
-&emsp;&emsp;使用&lt;audio&gt;和&lt;video&gt;至少要在标签中包含src属性。位于开始和结束标签之间的任何内容都将作为后备内容，在浏览器不支持这两个媒体元素的情况下显示
+&emsp;&emsp;使用&lt;audio&gt;和&lt;video&gt;至少要在标签中包含 src 属性。位于开始和结束标签之间的任何内容都将作为后备内容，在浏览器不支持这两个媒体元素的情况下显示
 
 <div>
 <pre>&lt;video src="#"&gt;
@@ -87,7 +87,7 @@ type      规定媒体资源的MIME类型</pre>
 &lt;/audio&gt;</pre>
 </div>
 
-&emsp;&emsp;因为并非所有浏览器都支持所有媒体格式，所以可以指定多个不同的媒体来源。为此，不用在标签中指定src属性，而是使用一个或多个&lt;source&gt;元素
+&emsp;&emsp;因为并非所有浏览器都支持所有媒体格式，所以可以指定多个不同的媒体来源。为此，不用在标签中指定 src 属性，而是使用一个或多个&lt;source&gt;元素
 
 <div>
 <pre>&lt;video&gt;
@@ -128,15 +128,15 @@ type      规定媒体资源的MIME类型</pre>
 
 &emsp;&emsp;&lt;track&gt;元素被当作媒体元素&mdash;&lt;audio&gt;和&lt;video&gt;的子元素来使用。它允许指定计时字幕（或者基于事件的数据），例如自动处理字幕
 
-&emsp;&emsp;track&nbsp;给媒体元素添加的数据的类型在kind属性中设置，属性值可以是&nbsp;subtitles,&nbsp;captions,&nbsp;descriptions,&nbsp;chapters&nbsp;或&nbsp;metadata。该元素指向当用户请求额外的数据时浏览器公开的包含定时文本的源文件。一个media元素的任意两个track子元素不能有相同的&nbsp;kind、srclang和&nbsp;label属性
+&emsp;&emsp;track&nbsp;给媒体元素添加的数据的类型在 kind 属性中设置，属性值可以是&nbsp;subtitles,&nbsp;captions,&nbsp;descriptions,&nbsp;chapters&nbsp;或&nbsp;metadata。该元素指向当用户请求额外的数据时浏览器公开的包含定时文本的源文件。一个 media 元素的任意两个 track 子元素不能有相同的&nbsp;kind、srclang 和&nbsp;label 属性
 
 【default】
 
-&emsp;&emsp;default属性规定该轨道是默认的，假如没有选择任何轨道
+&emsp;&emsp;default 属性规定该轨道是默认的，假如没有选择任何轨道
 
 【kind】
 
-&emsp;&emsp;kind属性表示轨道属于什么文本类型
+&emsp;&emsp;kind 属性表示轨道属于什么文本类型
 
 <div>
 <pre>captions 　　　　该轨道定义将在播放器中显示的简短说明
@@ -148,24 +148,25 @@ subtitles    　该轨道定义字幕，用于在视频中显示字幕</pre>
 
 【label】
 
-&emsp;&emsp;label属性表示轨道的标签或标题
+&emsp;&emsp;label 属性表示轨道的标签或标题
 
 【url】
 
-&emsp;&emsp;URL属性表示字幕文件的URL
+&emsp;&emsp;URL 属性表示字幕文件的 URL
 
 【srclang】
 
-&emsp;&emsp;srclang属性表示轨道的语言，若 kind 属性值是 "subtitles"，则该属性必需的。中文为"zh"，英文为"en"
+&emsp;&emsp;srclang 属性表示轨道的语言，若 kind 属性值是 "subtitles"，则该属性必需的。中文为"zh"，英文为"en"
 
-&emsp;&emsp;字幕文件书写格式如下所示，注意，毫秒位的3个0不能省略
+&emsp;&emsp;字幕文件书写格式如下所示，注意，毫秒位的 3 个 0 不能省略
 
 <div>
 <pre>WEBVTT
 
 1
 00:00:01.000 --&gt; 00:00:08.000
-欢迎来到小火柴的个人网站</pre>
+欢迎来到的个人网站</pre>
+
 </div>
 <div>
 <pre>&lt;video width="320" height="240" controls="controls"&gt;
@@ -181,7 +182,7 @@ subtitles    　该轨道定义字幕，用于在视频中显示字幕</pre>
 
 ## API
 
-&emsp;&emsp;HTML5 DOM为&lt;audio&gt;和&lt;video&gt;元素提供了方法、属性和事件
+&emsp;&emsp;HTML5 DOM 为&lt;audio&gt;和&lt;video&gt;元素提供了方法、属性和事件
 
 ### 方法
 
@@ -219,7 +220,7 @@ console.log(audio.canPlayType('video/ogg;codecs="theora,vorbis"'));
 
 2、load()
 
-&emsp;&emsp;重新加载音频或视频元素，用于在更改src来源或其他设置后对音频或视频元素进行更新
+&emsp;&emsp;重新加载音频或视频元素，用于在更改 src 来源或其他设置后对音频或视频元素进行更新
 
 <div>
 <pre>&lt;audio id="audio" src="song.mp3" autoplay controls&gt;&lt;/audio&gt;    
@@ -252,7 +253,7 @@ console.log(audio.canPlayType('video/ogg;codecs="theora,vorbis"'));
 
 ### 属性
 
-&emsp;&emsp;注意：所有属性中，只有videoWidth和videoHeight是立即可用的，在音视频的元数据加载后，其他属性才可用
+&emsp;&emsp;注意：所有属性中，只有 videoWidth 和 videoHeight 是立即可用的，在音视频的元数据加载后，其他属性才可用
 
 【只读】
 
@@ -279,7 +280,7 @@ oBtn.onclick = function(){
 
 2、currentSrc
 
-&emsp;&emsp;返回当前音频或视频的URL
+&emsp;&emsp;返回当前音频或视频的 URL
 
 <div>
 <pre>&lt;audio id="audio" src="https://demo.xiaohuochai.site/myocean.mp3" controls&gt;&lt;/audio&gt;
@@ -307,7 +308,7 @@ document.onclick = function(){
 
 4、duration
 
-&emsp;&emsp;返回当前音频或视频的长度(以秒计)，如果未设置则返回NaN
+&emsp;&emsp;返回当前音频或视频的长度(以秒计)，如果未设置则返回 NaN
 
 <div>
 <pre>&lt;audio id="audio" src="https://demo.xiaohuochai.site/myocean.mp3" controls&gt;&lt;/audio&gt;
@@ -370,7 +371,7 @@ played.start(index)(获得某个已播范围的开始位置)
 played.end(index)(获得某个已播范围的结束位置)</pre>
 </div>
 
-&emsp;&emsp;注意：首段已播范围的下标是0
+&emsp;&emsp;注意：首段已播范围的下标是 0
 
 <div>
 <pre>&lt;audio id="audio" src="https://demo.xiaohuochai.site/myocean.mp3" controls&gt;&lt;/audio&gt;
@@ -455,7 +456,7 @@ controls:true(显示控件)</pre>
 
 3、crossOrigin
 
-&emsp;&emsp;设置或返回CORS设置
+&emsp;&emsp;设置或返回 CORS 设置
 
 4、currentTime
 
@@ -473,7 +474,7 @@ document.onclick = function(){
 &lt;/script&gt;</pre>
 </div>
 
-5、defaultMuted(只有chrome支持)
+5、defaultMuted(只有 chrome 支持)
 
 <div>
 <pre>defaultMuted:true(初始静音)
@@ -553,7 +554,7 @@ preload:metadata;(当页面加载后仅加载音频或视频的元数据)
 preload:none;(页面加载后不加载音频或视频)</pre>
 </div>
 
-&emsp;&emsp;注意：当设置autoplay时，该属性无效
+&emsp;&emsp;注意：当设置 autoplay 时，该属性无效
 
 11、src
 
@@ -664,13 +665,9 @@ video.onemptied = function(){
 &lt;/script&gt;</pre>
 </div>
 
-
 ![process](https://pic.xiaohuochai.site/blog/HTML_tags_progress.jpg)
 
-
 ![abort](https://pic.xiaohuochai.site/blog/HTML_tags_abort.jpg)
-
-
 
 &emsp;&emsp;音频或视频控制按钮发生改变时触发以下事件:
 
@@ -729,9 +726,9 @@ audio.onwaiting = function(){
 
 &nbsp;
 
-### audio专有
+### audio 专有
 
-&emsp;&emsp;&lt;audio&gt;元素在一个原生的javascript构造函数Audio，可以在任何时候播放音频。Audio和Image很像，但Audio不用像Image那样必须插入到文档中，只要创建一个新实例，并传入音频源文件即可
+&emsp;&emsp;&lt;audio&gt;元素在一个原生的 javascript 构造函数 Audio，可以在任何时候播放音频。Audio 和 Image 很像，但 Audio 不用像 Image 那样必须插入到文档中，只要创建一个新实例，并传入音频源文件即可
 
 <div>
 <pre>var audio = new Audio('test.mp3');    </pre>
@@ -748,4 +745,4 @@ audio.load()
 &lt;/script&gt;</pre>
 </div>
 
-&emsp;&emsp;特别注意的是，IOS不能直接使用oncanplaythrough事件，需要添加audio.load()方法，否则该事件不生效
+&emsp;&emsp;特别注意的是，IOS 不能直接使用 oncanplaythrough 事件，需要添加 audio.load()方法，否则该事件不生效

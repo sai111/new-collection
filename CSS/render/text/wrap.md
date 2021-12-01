@@ -1,6 +1,6 @@
-# 深入理解CSS中的空白符和换行
+# 深入理解 CSS 中的空白符和换行
 
-&emsp;&emsp;CSS3新增了两个换行属性word-wrap和word-break。把空白符和换行放在一起说，是因为实际上空白符是包括换行的，且常用的文本不换行是使用的空白符的属性white-space: nowrap;到底它们还有些什么属性值，以及有什么对应的用法呢？本文就空白符和换行的内容做详细介绍和梳理
+&emsp;&emsp;CSS3 新增了两个换行属性 word-wrap 和 word-break。把空白符和换行放在一起说，是因为实际上空白符是包括换行的，且常用的文本不换行是使用的空白符的属性 white-space: nowrap;到底它们还有些什么属性值，以及有什么对应的用法呢？本文就空白符和换行的内容做详细介绍和梳理
 
 &nbsp;
 
@@ -8,7 +8,7 @@
 
 **定义**
 
-&emsp;&emsp;空白符是指空格、制表符和回车；HTML默认已经把所有空白符合并成一个空格
+&emsp;&emsp;空白符是指空格、制表符和回车；HTML 默认已经把所有空白符合并成一个空格
 
 white-space
 
@@ -28,9 +28,9 @@ pre: 不合并空白符，不允许自动换行
 pre-wrap: 不合并空白符，允许自动换行(在pre基础上，保留自动换行) </pre>
 </div>
 
-&emsp;&emsp;注意：&lt;pre&gt;元素默认带有样式white-space: pre;
+&emsp;&emsp;注意：&lt;pre&gt;元素默认带有样式 white-space: pre;
 
-&emsp;&emsp;注意：IE7-浏览器不支持pre-line和pre-wrap这两个属性值
+&emsp;&emsp;注意：IE7-浏览器不支持 pre-line 和 pre-wrap 这两个属性值
 
 <div>
 <pre>&lt;div&gt;They can stay 72-hours 
@@ -49,11 +49,11 @@ pre-wrap: 不合并空白符，允许自动换行(在pre基础上，保留自动
 
 &emsp;&emsp;对于中文来说，可以在任何一个文字后面换行，但浏览器碰到标点符号时，通常将标点符号以及其前一个文字作为一个整体进行换行
 
-&emsp;&emsp;所以实际上，white-space解决不了长单词或URL地址的换行问题
+&emsp;&emsp;所以实际上，white-space 解决不了长单词或 URL 地址的换行问题
 
 word-wrap
 
-&emsp;&emsp;word-wrap属性用来实现长单词或URL地址的自动换行
+&emsp;&emsp;word-wrap 属性用来实现长单词或 URL 地址的自动换行
 
 &emsp;&emsp;值: normal | break-word
 
@@ -68,15 +68,15 @@ word-wrap
 word-wrap:break-word(截断单词换行，长单词从下一行开始)</pre>
 </div>
 
-&emsp;&emsp;注意：当white-space的值是nowrap或pre时，word-break和word-wrap属性都失效
+&emsp;&emsp;注意：当 white-space 的值是 nowrap 或 pre 时，word-break 和 word-wrap 属性都失效
 
-&emsp;&emsp;注意：word-wrap在标准中被改为overflow-wrap，但由于兼容问题，一般还是使用word-wrap
+&emsp;&emsp;注意：word-wrap 在标准中被改为 overflow-wrap，但由于兼容问题，一般还是使用 word-wrap
 
 <iframe style="width: 100%; height: 300px;" src="https://demo.xiaohuochai.site/css/wrap/w2.html" frameborder="0" width="320" height="240"></iframe>
 
 word-break
 
-&emsp;&emsp;CSS3使用word-break属性来决定自动换行的处理方法。通过具体的属性设置，不仅可以让浏览器实现半角空格或连字符后面的换行，而且还可以让浏览器实现任意位置的换行。
+&emsp;&emsp;CSS3 使用 word-break 属性来决定自动换行的处理方法。通过具体的属性设置，不仅可以让浏览器实现半角空格或连字符后面的换行，而且还可以让浏览器实现任意位置的换行。
 
 &emsp;&emsp;值: normal | break-all | keep-all
 
@@ -97,9 +97,9 @@ keep-all: 对于英文长文本不能换行，但对于中文的处理，各浏�
     3]safari: 不支持</pre>
 </div>
 
-&emsp;&emsp;注意：移动端目前基本都不支持keep-all值&emsp;&emsp;
+&emsp;&emsp;注意：移动端目前基本都不支持 keep-all 值&emsp;&emsp;
 
-&emsp;&emsp;注意：当word-break值为break-all时，word-wrap属性失效；否则两个属性都起作用
+&emsp;&emsp;注意：当 word-break 值为 break-all 时，word-wrap 属性失效；否则两个属性都起作用
 
 <iframe style="width: 100%; height: 440px;" src="https://demo.xiaohuochai.site/css/wrap/w3.html" frameborder="0" width="320" height="240"></iframe>
 
@@ -107,7 +107,7 @@ keep-all: 对于英文长文本不能换行，但对于中文的处理，各浏�
 
 ### 表格
 
-&emsp;&emsp;对于表单元格的长文本来说，使用word-wrap或word-break来强制换行需要设置table-layout:fixed
+&emsp;&emsp;对于表单元格的长文本来说，使用 word-wrap 或 word-break 来强制换行需要设置 table-layout:fixed
 
 <iframe style="width: 100%; height: 300px;" src="https://demo.xiaohuochai.site/css/wrap/w4.html" frameborder="0" width="320" height="240"></iframe>
 
@@ -115,9 +115,9 @@ keep-all: 对于英文长文本不能换行，但对于中文的处理，各浏�
 
 ### 伪元素换行
 
-&emsp;&emsp;有一个Unicode字符，是专门代表换行符的:0x000A，在CSS中，写作'\000A'，可以简写为'\A'
+&emsp;&emsp;有一个 Unicode 字符，是专门代表换行符的:0x000A，在 CSS 中，写作'\000A'，可以简写为'\A'
 
-&emsp;&emsp;但是，由于浏览器会合并空白符。因此，需要使用pre来阻止空白符的合并
+&emsp;&emsp;但是，由于浏览器会合并空白符。因此，需要使用 pre 来阻止空白符的合并
 
 &emsp;&emsp;下面是一个实例
 
@@ -130,7 +130,7 @@ dd+dd::before{content:',';font-weight:normal;}
 &lt;/style&gt;
 &lt;dl&gt;
   &lt;dt&gt;姓名:&lt;/dt&gt;
-  &lt;dd&gt;小火柴&lt;/dd&gt;
+  &lt;dd&gt;&lt;/dd&gt;
   &lt;dt&gt;邮箱:&lt;/dt&gt;
   &lt;dd&gt;123@qq.com&lt;/dd&gt;
   &lt;dd&gt;123@163.com&lt;/dd&gt;  
@@ -143,9 +143,8 @@ dd+dd::before{content:',';font-weight:normal;}
 
 ## 最后
 
-&emsp;&emsp;我个人理解，空白符(white-space)最常用的功能是nowrap，即不换行；而CSS3新增的两个属性word-wrap和word-break主要用于解决长文本换行的问题。word-wrap:break-word截断长文本换行，长文本从下一行开始；word-break:break-all也用于截断长文本换行，但长文本会占据当前行剩余空间
+&emsp;&emsp;我个人理解，空白符(white-space)最常用的功能是 nowrap，即不换行；而 CSS3 新增的两个属性 word-wrap 和 word-break 主要用于解决长文本换行的问题。word-wrap:break-word 截断长文本换行，长文本从下一行开始；word-break:break-all 也用于截断长文本换行，但长文本会占据当前行剩余空间
 
-&emsp;&emsp;当然，空白符(white-space)除了nowrap，还有其他的一些属性值。word-wrap和word-break也有针对中文的处理。但由于浏览器兼容器问题，用的并不是太多
+&emsp;&emsp;当然，空白符(white-space)除了 nowrap，还有其他的一些属性值。word-wrap 和 word-break 也有针对中文的处理。但由于浏览器兼容器问题，用的并不是太多
 
 &emsp;&emsp;欢迎交流
-

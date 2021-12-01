@@ -1,4 +1,4 @@
-# CSS画出的图
+# CSS 画出的图
 
 ## 简单图形
 
@@ -140,7 +140,7 @@
 }
 &lt;/style&gt;
 &lt;div class="outer"&gt;
-  &lt;div class="inner"&gt;小火柴&lt;/div&gt;
+  &lt;div class="inner"&gt;&lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
 
@@ -262,7 +262,7 @@ nav &gt; a:before{
 
 &emsp;&emsp;一个大三角形底部掏掉一个小三角形；两个前面的相同图形叠压
 
-&emsp;&emsp;经计算，五角星的夹角为36度，若小三角形的侧边为a，则大三角形的侧边为2a(1+sin18)，两个三角形共同的底边为2a(sin54)
+&emsp;&emsp;经计算，五角星的夹角为 36 度，若小三角形的侧边为 a，则大三角形的侧边为 2a(1+sin18)，两个三角形共同的底边为 2a(sin54)
 
 <div>
 <pre>
@@ -402,7 +402,7 @@ div:after{
 
 ### 桃心
 
-&emsp;&emsp;创建一个方形div，分别用css控制div的两个伪元素平移到正方形相邻两边，圆形与边中点重合。最后将总的div旋转45度
+&emsp;&emsp;创建一个方形 div，分别用 css 控制 div 的两个伪元素平移到正方形相邻两边，圆形与边中点重合。最后将总的 div 旋转 45 度
 
 <div>
 <pre>&lt;style&gt;
@@ -565,9 +565,9 @@ div:after{
 
 <iframe style="width: 100%; height: 130px;" src="https://demo.xiaohuochai.site/css/shape/s26.html" frameborder="0" width="320" height="240"></iframe>
 
-【SVG实现】
+【SVG 实现】
 
-&emsp;&emsp;让圆形的周长接近于100，方便计算。r = 100/(2*PI) = 16
+&emsp;&emsp;让圆形的周长接近于 100，方便计算。r = 100/(2\*PI) = 16
 
 <div>
 <pre>&lt;style&gt;
@@ -598,7 +598,6 @@ circle{
 
 ## 最后
 
-&emsp;&emsp;除了使用CSS画图之后，实现各种形状更简单的方法是使用[clip-path路径裁剪样式](http://www.cnblogs.com/xiaohuochai/p/7509225.html)
+&emsp;&emsp;除了使用 CSS 画图之后，实现各种形状更简单的方法是使用[clip-path 路径裁剪样式](http://www.cnblogs.com/xiaohuochai/p/7509225.html)
 
 &emsp;&emsp;欢迎交流
-

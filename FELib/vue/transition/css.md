@@ -1,17 +1,17 @@
-# Vue过渡效果之CSS过渡
+# Vue 过渡效果之 CSS 过渡
 
-&emsp;&emsp;Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。本文将从CSS过渡transition、CSS动画animation及配合使用第三方CSS动画库(如[animate.css](http://www.cnblogs.com/xiaohuochai/p/7372665.html))这三方面来详细介绍Vue过渡效果之CSS过渡
+&emsp;&emsp;Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。本文将从 CSS 过渡 transition、CSS 动画 animation 及配合使用第三方 CSS 动画库(如[animate.css](http://www.cnblogs.com/xiaohuochai/p/7372665.html))这三方面来详细介绍 Vue 过渡效果之 CSS 过渡
 
 &nbsp;
 
 ### 引入
 
-&emsp;&emsp;以一个toggle按钮控制p元素显隐为例，如果不使用过渡效果，则如下所示
+&emsp;&emsp;以一个 toggle 按钮控制 p 元素显隐为例，如果不使用过渡效果，则如下所示
 
 <div>
 <pre>&lt;div id="demo"&gt;
   &lt;button v-on:click="show = !show"&gt;Toggle&lt;/button&gt;
-  &lt;p v-if="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+  &lt;p v-if="show"&gt;的蓝色理想&lt;/p&gt;
 &lt;/div&gt;</pre>
 </div>
 <div>
@@ -27,21 +27,21 @@ new Vue({
 
 <iframe style="width: 100%; height: 90px;" src="https://demo.xiaohuochai.site/vue/transition/t1.html" frameborder="0" width="320" height="240"></iframe>
 
-&emsp;&emsp;如果要为此加入过渡效果，则需要使用过渡组件transition
+&emsp;&emsp;如果要为此加入过渡效果，则需要使用过渡组件 transition
 
 &nbsp;
 
 ### 过渡组件
 
-&emsp;&emsp;Vue提供了`transition`的封装组件，下面代码中，该过渡组件的名称为'fade'
+&emsp;&emsp;Vue 提供了`transition`的封装组件，下面代码中，该过渡组件的名称为'fade'
 
 <div>
 <pre>  &lt;transition name="fade"&gt;
-    &lt;p v-if="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p v-if="show"&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;</pre>
 </div>
 
-&emsp;&emsp;当插入或删除包含在`transition`组件中的元素时，Vue会自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名
+&emsp;&emsp;当插入或删除包含在`transition`组件中的元素时，Vue 会自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名
 
 &nbsp;
 
@@ -49,7 +49,7 @@ new Vue({
 
 ![vue_transition_css1](https://pic.xiaohuochai.site/blog/vue_transition_css1.png)
 
-&emsp;&emsp;总共有6个(CSS)类名在enter/leave的过渡中切换
+&emsp;&emsp;总共有 6 个(CSS)类名在 enter/leave 的过渡中切换
 
 【v-enter】
 
@@ -81,7 +81,7 @@ new Vue({
 
 ### transition
 
-&emsp;&emsp;常用的Vue过渡效果都是使用[CSS过渡transition](http://www.cnblogs.com/xiaohuochai/p/5347930.html)，下面增加一个enter时透明度变化，leave时位移变化的效果
+&emsp;&emsp;常用的 Vue 过渡效果都是使用[CSS 过渡 transition](http://www.cnblogs.com/xiaohuochai/p/5347930.html)，下面增加一个 enter 时透明度变化，leave 时位移变化的效果
 
 <div>
 <pre>&lt;style&gt;
@@ -103,7 +103,7 @@ new Vue({
 <pre>&lt;div id="demo"&gt;
   &lt;button v-on:click="show = !show"&gt;Toggle&lt;/button&gt;    
   &lt;transition name="fade"&gt;
-    &lt;p v-if="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p v-if="show"&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -124,9 +124,9 @@ new Vue({
 
 ### animation
 
-&emsp;&emsp;[CSS动画animation](http://www.cnblogs.com/xiaohuochai/p/5391663.html)用法同CSS过渡transition，区别是在动画中 `v-enter` 类名在节点插入 DOM 后不会立即删除，而是在 `animationend` 事件触发时删除
+&emsp;&emsp;[CSS 动画 animation](http://www.cnblogs.com/xiaohuochai/p/5391663.html)用法同 CSS 过渡 transition，区别是在动画中 `v-enter` 类名在节点插入 DOM 后不会立即删除，而是在 `animationend` 事件触发时删除
 
-&emsp;&emsp;下面例子中，在元素enter和leave时都增加缩放scale效果
+&emsp;&emsp;下面例子中，在元素 enter 和 leave 时都增加缩放 scale 效果
 
 <div>
 <pre>&lt;style&gt;
@@ -147,7 +147,7 @@ new Vue({
 <pre>&lt;div id="demo"&gt;
   &lt;button v-on:click="show = !show"&gt;Toggle&lt;/button&gt;    
   &lt;transition name="bounce"&gt;
-    &lt;p v-if="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p v-if="show"&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -192,7 +192,7 @@ new Vue({
 <pre>&lt;div id="demo"&gt;
   &lt;button v-on:click="show = !show"&gt;Toggle&lt;/button&gt;    
   &lt;transition name="fade" type="transition"&gt;
-    &lt;p v-if="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p v-if="show"&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -224,7 +224,7 @@ leave-active-class
 leave-to-class </pre>
 </div>
 
-&emsp;&emsp;自定义类名的优先级高于普通的类名，这对于Vue的过渡系统和其他第三方CSS动画库，如 [Animate.css](http://www.cnblogs.com/xiaohuochai/p/7372665.html) 结合使用十分有用
+&emsp;&emsp;自定义类名的优先级高于普通的类名，这对于 Vue 的过渡系统和其他第三方 CSS 动画库，如 [Animate.css](http://www.cnblogs.com/xiaohuochai/p/7372665.html) 结合使用十分有用
 
 <div>
 <pre>&lt;link rel="stylesheet" href="https://unpkg.com/animate.css@3.5.2/animate.min.css"&gt;</pre>
@@ -235,7 +235,7 @@ leave-to-class </pre>
     Toggle render
   &lt;/button&gt;
   &lt;transition  name="xxx" enter-active-class="animated tada"  leave-active-class="animated bounceOutRight"&gt;
-    &lt;p v-if="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p v-if="show"&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -298,7 +298,7 @@ new Vue({
   &lt;transition appear   appear-class="custom-appear-class"
   appear-to-class="custom-appear-to-class" 
   appear-active-class="custom-appear-active-class"&gt;
-    &lt;p&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -321,11 +321,11 @@ new Vue({
 
 ### 过渡时间
 
-&emsp;&emsp;在很多情况下，Vue可以自动得出过渡效果的完成时机。默认情况下，Vue会等待其在过渡效果的根元素的第一个 `transitionend` 或 `animationend` 事件。然而也可以不这样设定&mdash;&mdash;比如，可以拥有一个精心编排的一序列过渡效果，其中一些嵌套的内部元素相比于过渡效果的根元素有延迟的或更长的过渡效果
+&emsp;&emsp;在很多情况下，Vue 可以自动得出过渡效果的完成时机。默认情况下，Vue 会等待其在过渡效果的根元素的第一个 `transitionend` 或 `animationend` 事件。然而也可以不这样设定&mdash;&mdash;比如，可以拥有一个精心编排的一序列过渡效果，其中一些嵌套的内部元素相比于过渡效果的根元素有延迟的或更长的过渡效果
 
 &emsp;&emsp;在这种情况下可以用&lt;transition&gt;组件上的`duration`属性定制一个显性的过渡效果持续时间 (以毫秒计)
 
-&emsp;&emsp;下面的代码意味着元素在进入enter和离开leave时，持续时间都为1s，而无论在样式中它们的设置值为多少
+&emsp;&emsp;下面的代码意味着元素在进入 enter 和离开 leave 时，持续时间都为 1s，而无论在样式中它们的设置值为多少
 
 <div>
 <pre>&lt;transition :duration="1000"&gt;...&lt;/transition&gt;</pre>
@@ -337,13 +337,13 @@ new Vue({
 <pre>&lt;transition :duration="{ enter: 500, leave: 800 }"&gt;...&lt;/transition&gt;</pre>
 </div>
 
-&emsp;&emsp;比如，下面的代码中，进入和移出的效果都为animate.css里面的shake效果，但持续时间分别是0.5s和1s
+&emsp;&emsp;比如，下面的代码中，进入和移出的效果都为 animate.css 里面的 shake 效果，但持续时间分别是 0.5s 和 1s
 
 <div>
 <pre>&lt;div id="demo"&gt;
   &lt;button v-on:click="show = !show"&gt;Toggle&lt;/button&gt;    
   &lt;transition  :duration="{ enter: 500, leave: 1000 }" name="xxx" enter-active-class="animated shake"  leave-active-class="animated shake"&gt;
-    &lt;p v-if="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p v-if="show"&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -364,11 +364,11 @@ new Vue({
 
 ### 过渡条件
 
-&emsp;&emsp;一般地，在Vue中满足下列任意一个过渡条件，即可添加过渡效果
+&emsp;&emsp;一般地，在 Vue 中满足下列任意一个过渡条件，即可添加过渡效果
 
-【条件渲染(使用v-if)】
+【条件渲染(使用 v-if)】
 
-&emsp;&emsp;常见的条件是使用条件渲染，使用v-if
+&emsp;&emsp;常见的条件是使用条件渲染，使用 v-if
 
 <div>
 <pre>&lt;style&gt;
@@ -384,7 +384,7 @@ new Vue({
 <pre>&lt;div id="demo"&gt;
   &lt;button v-on:click="show = !show"&gt;Toggle&lt;/button&gt;    
   &lt;transition name="fade"&gt;
-    &lt;p v-if="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p v-if="show"&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -401,15 +401,15 @@ new Vue({
 
 <iframe style="width: 100%; height: 90px;" src="https://demo.xiaohuochai.site/vue/transition/t8.html" frameborder="0" width="320" height="240"></iframe>
 
-【条件展示(使用v-show)】&nbsp;
+【条件展示(使用 v-show)】&nbsp;
 
-&emsp;&emsp;使用条件展示，即使用v-show时，也可以添加过渡效果
+&emsp;&emsp;使用条件展示，即使用 v-show 时，也可以添加过渡效果
 
 <div>
 <pre>&lt;div id="demo"&gt;
   &lt;button v-on:click="show = !show"&gt;Toggle&lt;/button&gt;    
   &lt;transition name="fade"&gt;
-    &lt;p v-show="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p v-show="show"&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -418,7 +418,7 @@ new Vue({
 
 【动态组件】
 
-&emsp;&emsp;使用is属性实现的动态组件，可以添加过渡效果
+&emsp;&emsp;使用 is 属性实现的动态组件，可以添加过渡效果
 
 <div>
 <pre>&lt;div id="demo"&gt;
@@ -433,7 +433,7 @@ new Vue({
 new Vue({
   el: '#demo',
   components:{
-    'home':{template:'&lt;div&gt;小火柴的蓝色理想&lt;/div&gt;'}
+    'home':{template:'&lt;div&gt;的蓝色理想&lt;/div&gt;'}
   },
   data: {
     show: true,
@@ -448,4 +448,3 @@ new Vue({
 </div>
 
 <iframe style="width: 100%; height: 60px;" src="https://demo.xiaohuochai.site/vue/transition/t10.html" frameborder="0" width="320" height="240"></iframe>
-

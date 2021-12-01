@@ -158,14 +158,14 @@ $ npm install</pre>
 
 ![vue_base_vueCli9](https://pic.xiaohuochai.site/blog/vue_base_vueCli9.png)
 
-&emsp;&emsp;打开 app.vue 文件，在模板中加入&lt;p&gt;小火柴的蓝色理想&lt;/p&gt;&nbsp;这一行代码，并保存
+&emsp;&emsp;打开 app.vue 文件，在模板中加入&lt;p&gt;的蓝色理想&lt;/p&gt;&nbsp;这一行代码，并保存
 
 <div>
 <pre>&lt;template&gt;
   &lt;div id="app"&gt;
     &lt;img src="./assets/logo.png"&gt;
     &lt;router-view&gt;&lt;/router-view&gt;
-    &lt;p&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p&gt;的蓝色理想&lt;/p&gt;
   &lt;/div&gt;
 &lt;/template&gt;</pre>
 </div>
@@ -189,4 +189,3 @@ $ npm install</pre>
 &emsp;&emsp;生成的 dist 目录，就是打包构建后的项目目录
 
 ![vue_base_vueCli12](https://pic.xiaohuochai.site/blog/vue_base_vueCli12.png)
-

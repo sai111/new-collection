@@ -1,12 +1,12 @@
-# gitbook简明学习
+# gitbook 简明学习
 
-&emsp;&emsp;gitbook功能强大，可以自动实现搜索及翻页等功能，上手容易，用markdown书写即可，且可以自动生成响应式网站。本文将详细介绍如何使用gitbook
+&emsp;&emsp;gitbook 功能强大，可以自动实现搜索及翻页等功能，上手容易，用 markdown 书写即可，且可以自动生成响应式网站。本文将详细介绍如何使用 gitbook
 
 &nbsp;
 
 ### 安装
 
-&emsp;&emsp;1、使用npm全局安装gitbook-cli
+&emsp;&emsp;1、使用 npm 全局安装 gitbook-cli
 
 <div>
 <pre>npm install gitbook-cli -g</pre>
@@ -14,8 +14,7 @@
 
 ![helper_gitbook1](https://pic.xiaohuochai.site/blog/helper_gitbook1.png)
 
-
-&emsp;&emsp;2、使用gitbook --version来查看gitbook的版本
+&emsp;&emsp;2、使用 gitbook --version 来查看 gitbook 的版本
 
 <div>
 <pre>gitbook --version</pre>
@@ -23,15 +22,14 @@
 
 ![helper_gitbook2](https://pic.xiaohuochai.site/blog/helper_gitbook2.png)
 
-
-&emsp;&emsp;3、接下来对gitbook进行基础配置，创建并进入一个笔记文件夹
+&emsp;&emsp;3、接下来对 gitbook 进行基础配置，创建并进入一个笔记文件夹
 
 <div>
 <pre>mkdir myNote
 cd myNode</pre>
 </div>
 
-&emsp;&emsp;4、初始化gitbook，会自动生成两个文件。README.md用于书籍介绍，SUMMARY.md用于设置书籍的目录
+&emsp;&emsp;4、初始化 gitbook，会自动生成两个文件。README.md 用于书籍介绍，SUMMARY.md 用于设置书籍的目录
 
 <div>
 <pre>gitbook init</pre>
@@ -39,8 +37,7 @@ cd myNode</pre>
 
 ![helper_gitbook3](https://pic.xiaohuochai.site/blog/helper_gitbook3.png)
 
-
-&emsp;&emsp;5、接着，使用gitbook serve命令来启动gitbook本地服务器，预览默认的书籍内容
+&emsp;&emsp;5、接着，使用 gitbook serve 命令来启动 gitbook 本地服务器，预览默认的书籍内容
 
 <div>
 <pre>gitbook serve</pre>
@@ -48,14 +45,11 @@ cd myNode</pre>
 
 ![helper_gitbook4](https://pic.xiaohuochai.site/blog/helper_gitbook4.png)
 
-
-&emsp;&emsp;6、打开localhost:4000，会出现如下页面
-
+&emsp;&emsp;6、打开 localhost:4000，会出现如下页面
 
 ![helper_gitbook5](https://pic.xiaohuochai.site/blog/helper_gitbook5.png)
 
-
-&emsp;&emsp;7、使用gitbook install命令来安装插件
+&emsp;&emsp;7、使用 gitbook install 命令来安装插件
 
 <div>
 <pre>gitbook install</pre>
@@ -63,7 +57,7 @@ cd myNode</pre>
 
 &emsp;&emsp;8、生成静态网页
 
-&emsp;&emsp;使用gitbook build命令，gitbook把md文件构建成静态网页
+&emsp;&emsp;使用 gitbook build 命令，gitbook 把 md 文件构建成静态网页
 
 <div>
 <pre>gitbook build #生成静态网页</pre>
@@ -94,7 +88,7 @@ cd myNode</pre>
 
 【`Glossary.md`】
 
-&emsp;&emsp;允许指定要显示为注释的术语及其各自的定义。根据这些条款，GitBook将自动构建一个索引并突出显示这些术语
+&emsp;&emsp;允许指定要显示为注释的术语及其各自的定义。根据这些条款，GitBook 将自动构建一个索引并突出显示这些术语
 
 &emsp;&emsp;该`GLOSSARY.md`格式是列表`h2`的标题，以及描述项一起
 
@@ -112,11 +106,11 @@ and all other kinds of inline markup ...</pre>
 
 【`.bookignore`】
 
-&emsp;&emsp;GitBook将读取`.gitignore`，`.bookignore`以及`.ignore`文件以获得文件和文件夹跳过列表
+&emsp;&emsp;GitBook 将读取`.gitignore`，`.bookignore`以及`.ignore`文件以获得文件和文件夹跳过列表
 
 【`SUMMARY.md`】
 
-&emsp;&emsp;该文件用于存放GitBook的文件目录信息，左侧的目录就是根据这个文件来生成的，默认对应的文件是&nbsp;`SUMMARY.md`，可以在&nbsp;`book.json`&nbsp;重新定义该文件的对应值。它通过Markdown中的列表语法来表示文件的父子关系
+&emsp;&emsp;该文件用于存放 GitBook 的文件目录信息，左侧的目录就是根据这个文件来生成的，默认对应的文件是&nbsp;`SUMMARY.md`，可以在&nbsp;`book.json`&nbsp;重新定义该文件的对应值。它通过 Markdown 中的列表语法来表示文件的父子关系
 
 &emsp;&emsp;注意：不被`SUMMARY.md`包含的文件不会被`gitbook`处理
 
@@ -172,14 +166,14 @@ and all other kinds of inline markup ...</pre>
 
 ### 配置
 
-&emsp;&emsp;下面是book.json中的一些配置信息
+&emsp;&emsp;下面是 book.json 中的一些配置信息
 
 【title】
 
 &emsp;&emsp;书本的标题
 
 <div>
-<pre>"title" : "小火柴的前端小册子"</pre>
+<pre>"title" : "的前端小册子"</pre>
 </div>
 
 【author】
@@ -195,12 +189,12 @@ and all other kinds of inline markup ...</pre>
 &emsp;&emsp;本书的简单描述
 
 <div>
-<pre>"description" : "小火柴的前端学习记录"</pre>
+<pre>"description" : "的前端学习记录"</pre>
 </div>
 
 【language】
 
-&emsp;&emsp;Gitbook使用的语言
+&emsp;&emsp;Gitbook 使用的语言
 
 <div>
 <pre>"language" : "zh-hans",</pre>
@@ -250,12 +244,14 @@ structure.languages  语言文件名（默认为LANGS.md）</pre>
 
 【转义】
 
-&emsp;&emsp;如果想要输出任何特殊的目标标签，可以使用raw，任何在其中的内容都会原样输出
+&emsp;&emsp;如果想要输出任何特殊的目标标签，可以使用 raw，任何在其中的内容都会原样输出
+
 ```
 {% raw %}
   这 {{ 不会被处理 }}
 {% endraw %}
 ```
+
 【link】
 
 &emsp;&emsp;插件中的链接(null: default, false: remove, string: new value)
@@ -286,7 +282,7 @@ structure.languages  语言文件名（默认为LANGS.md）</pre>
 pluginsConfig　  插件配置</pre>
 </div>
 
-&emsp;&emsp;gitbook默认带有6个插件
+&emsp;&emsp;gitbook 默认带有 6 个插件
 
 <div>
 <pre>highlight
@@ -347,6 +343,7 @@ lunr</pre>
 }
 
 // note: contentBottom is escape('&lt;div&gt;Ads at the bottom of the page&lt;/div&gt;')</pre>
+
 </div>
 
 【目录宽度可调节：splitter】
@@ -357,7 +354,7 @@ lunr</pre>
 }</pre>
 </div>
 
-【github图标】
+【github 图标】
 
 <div>
 <pre>{
@@ -424,9 +421,9 @@ lunr</pre>
 }</pre>
 </div>
 
-【更换ico：favicon】
+【更换 ico：favicon】
 
-&emsp;&emsp;注意：favicon只支持本地路径，不支持网络路径
+&emsp;&emsp;注意：favicon 只支持本地路径，不支持网络路径
 
 <div>
 <pre>{
@@ -451,7 +448,7 @@ lunr</pre>
 
 ### 主题
 
-&emsp;&emsp;目前 GitBook 提供了三类文档： Book 文档、API文档、FAQ文档。常用的是 Book 文档模式，如果需要使用 API 文档模式或者 FAQ 文档模式，只需引入文档对应的主题插件即可
+&emsp;&emsp;目前 GitBook 提供了三类文档： Book 文档、API 文档、FAQ 文档。常用的是 Book 文档模式，如果需要使用 API 文档模式或者 FAQ 文档模式，只需引入文档对应的主题插件即可
 
 【Book】
 
@@ -467,7 +464,7 @@ lunr</pre>
 }</pre>
 </div>
 
-&emsp;&emsp;them-comscore是另一个Book主题，可以为标题添加颜色
+&emsp;&emsp;them-comscore 是另一个 Book 主题，可以为标题添加颜色
 
 <div>
 <pre>{
@@ -508,7 +505,7 @@ lunr</pre>
 
 &emsp;&emsp;编写帮助中心很简单，在&nbsp;`Summary`&nbsp;里配置问题以及答案所在的文件，在对应文件中写入问题的答案即可
 
-&emsp;&emsp;注意：由于FAQ主题默认会调用maxcdn里的bootstrap和fontawesome，所以对于国内用户来说，可访问性不是很好
+&emsp;&emsp;注意：由于 FAQ 主题默认会调用 maxcdn 里的 bootstrap 和 fontawesome，所以对于国内用户来说，可访问性不是很好
 
 ```
 # Summary
@@ -532,9 +529,9 @@ lunr</pre>
 
 ### 修改内容
 
-&emsp;&emsp;下面在初始化的gitbook的基础上修改内容，并制作一个简单的电子书
+&emsp;&emsp;下面在初始化的 gitbook 的基础上修改内容，并制作一个简单的电子书
 
-&emsp;&emsp;注意：gitbook需要掌握markdown语法，详细信息[移步至此](http://www.cnblogs.com/xiaohuochai/p/6211447.html)
+&emsp;&emsp;注意：gitbook 需要掌握 markdown 语法，详细信息[移步至此](http://www.cnblogs.com/xiaohuochai/p/6211447.html)
 
 &emsp;&emsp;修改目录文件`SUMMARY.md`
 
@@ -552,17 +549,17 @@ lunr</pre>
 * [参考资料](Resources.md)
 ```
 
-&emsp;&emsp;修改book.json文件
+&emsp;&emsp;修改 book.json 文件
 
 <div>
 <pre>{
   "title": "FE-booklet",
-  "description": "小火柴的前端小册子",
+  "description": "的前端小册子",
   "author": "xiaohuochai",
   "language": "zh-hans",
   "links": {
     "sidebar": {
-      "小火柴的博客": "https://cnblogs.com/xiaohuochai"
+      "的博客": "https://cnblogs.com/xiaohuochai"
     }
   },
   "styles":{
@@ -598,4 +595,3 @@ lunr</pre>
 &emsp;&emsp;最终效果如下
 
  <iframe src="https://www.xiaohuochai.site" width="600" height="700"></iframe>
-

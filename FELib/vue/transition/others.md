@@ -1,6 +1,6 @@
-# Vue可复用过渡和动态过渡
+# Vue 可复用过渡和动态过渡
 
-&emsp;&emsp;本文将详细介绍Vue可复用过渡和动态过渡
+&emsp;&emsp;本文将详细介绍 Vue 可复用过渡和动态过渡
 
 &nbsp;
 
@@ -79,7 +79,7 @@
   Fade In: &lt;input type="range" v-model="fadeInDuration" min="0" :max="maxFadeDuration"&gt;
   Fade Out: &lt;input type="range" v-model="fadeOutDuration" min="0" :max="maxFadeDuration"&gt;
   &lt;transition :css="false" @before-enter="beforeEnter" @enter="enter" @leave="leave"&gt;
-    &lt;p v-if="show"&gt;小火柴的蓝色理想&lt;/p&gt;
+    &lt;p v-if="show"&gt;的蓝色理想&lt;/p&gt;
   &lt;/transition&gt;
   &lt;button v-if="stop" @click="stop = show = false"&gt;运行动画&lt;/button&gt;
   &lt;button v-else @click="stop = true"&gt;停止动画&lt;/button&gt;
@@ -127,4 +127,3 @@ new Vue({
 </div>
 
 <iframe style="width: 100%; height: 130px;" src="https://demo.xiaohuochai.site/vue/transition/t32.html" frameborder="0" width="320" height="240"></iframe>
-
